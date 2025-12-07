@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pi-Vate Cloud</title>
+  <style>
+    body {margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f7fa;color:#222;line-height:1.6;}
+    header {background:#1a365d;color:#fff;padding:20px 30px;}
+    header h1 {margin:0;font-size:26px;}
+    nav {margin-top:10px;}
+    nav a {color:#cbd5e0;margin-right:15px;text-decoration:none;font-size:14px;}
+    nav a:hover {text-decoration:underline;}
+
+    .container {max-width:960px;margin:30px auto;padding:0 20px;}
+    .section {background:#fff;padding:22px;border-radius:8px;margin-bottom:22px;border:1px solid #e2e8f0;}
+    h2 {margin-top:0;color:#1a365d;font-size:20px;}
+    ul {padding-left:20px;}
+
+    footer {text-align:center;padding:20px;color:#555;font-size:14px;margin-top:20px;}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Pi‑Vate Cloud</h1>
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#features">Features</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#performance">Performance</a>
+    <a href="#security">Security</a>
+    <a href="#authors">Authors</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div id="overview" class="section">
+    <h2>Overview</h2>
+    <p>Pi‑Vate Cloud is a self‑hosted personal cloud solution built on Raspberry Pi using OpenMediaVault, Docker, Plex, and Twingate. It provides private storage, media streaming, and secure remote access without recurring subscription fees.</p>
+  </div>
+
+  <div id="features" class="section">
+    <h2>Key Features</h2>
+    <ul>
+      <li>Personal NAS with OpenMediaVault (SMB/CIFS shares, user permissions)</li>
+      <li>Plex Media Server (Docker) for Direct‑Play media streaming</li>
+      <li>Zero‑Trust Remote Access via Twingate</li>
+      <li>System security: SSH key‑only login, UFW firewall, fail2ban</li>
+      <li>Optional LUKS encryption for data‑at‑rest security</li>
+      <li>Cost‑efficient and fully self‑sovereign cloud ecosystem</li>
+    </ul>
+  </div>
+
+  <div id="architecture" class="section">
+    <h2>System Architecture</h2>
+    <p>The system combines NAS functionality (OMV), media services (Plex), and Zero‑Trust networking (Twingate). Docker containers provide modular deployment and easy updates.</p>
+    <pre>
+Raspberry Pi 4
+├── OMV (NAS)
+├── Docker
+│   ├── Plex Media Server
+│   ├── Backup / Utility Containers
+└── Twingate Connector (Secure Remote Access)
+    </pre>
+  </div>
+
+  <div id="performance" class="section">
+    <h2>Performance Summary</h2>
+    <ul>
+      <li>Upload of 10 images (~120 MB): 45–60 seconds</li>
+      <li>Upload of 3.33 GB video: 25–30 minutes</li>
+      <li>Smooth 1080p LAN streaming via Plex (Direct‑Play)</li>
+      <li>Remote access speed depends on ISP uplink bandwidth</li>
+    </ul>
+  </div>
+
+  <div id="security" class="section">
+    <h2>Security Architecture</h2>
+    <ul>
+      <li>Zero‑Trust remote access with no open ports</li>
+      <li>SSH key‑only authentication</li>
+      <li>UFW firewall & fail2ban intrusion protection</li>
+      <li>Optional disk encryption using LUKS</li>
+    </ul>
+  </div>
+
+  <div id="authors" class="section">
+    <h2>Authors</h2>
+    <p><strong>Rushi Daulatkar, Atharva Dhote, Abhijeet Pathode, Harsh Yadav</strong><br>
+    Guide: <strong>Prof. Renuka Raut</strong><br>
+    Department of Computer Science & Business Systems,<br>
+    St. Vincent Pallotti College of Engineering & Technology, Nagpur.</p>
+  </div>
+
+</div>
+
+<footer>
+  Pi‑Vate Cloud — Secure, Self‑Hosted Personal Cloud Solution
+</footer>
+
+</body>
+</html>
