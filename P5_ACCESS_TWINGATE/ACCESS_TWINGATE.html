@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+
+<html data-bs-theme="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+      name="author"
+    />
+    <meta content="Hugo 0.122.0" name="generator" />
+
+    <title>Access Twingate</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+      rel="stylesheet"
+    />
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="/docs/5.3/assets/img/favicons/apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link href="/docs/5.3/assets/img/favicons/manifest.json" rel="manifest" />
+    <link
+      href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
+      rel="mask-icon"
+    />
+    <link href="/docs/5.3/assets/img/favicons/favicon.ico" rel="icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta content="#712cf9" name="theme-color" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      .card {
+        height: 100%;
+      }
+      /* Make the modal image cover the full screen */
+      .zoom-img {
+        width: 100vw; /* Full screen width */
+        height: 100vh; /* Full screen height */
+        object-fit: contain; /* Keep aspect ratio */
+        cursor: pointer; /* Indicate click to close */
+      }
+    </style>
+  </head>
+
+  <body>
+    <header data-bs-theme="dark">
+      <div class="text-bg-dark collapse" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <p class="text-body-secondary"></p>
+
+              <h4>⚠️ Disclaimer ⚠️</h4>
+              <br />
+              The commands and instructions provided on this website are for
+              <b>educational and informational purposes only</b>. We are not
+              responsible for any
+              <b>data loss, system damage, or security risks</b> that may arise
+              from using these commands. Always ensure you
+              <b>understand</b> what each command does before executing it, and
+              create backups if necessary.<br />
+              <b>Use them at your own risk.</b>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="#"
+            ><strong>Disclaimer ↑</strong></a
+          >
+          <button
+            aria-controls="navbarHeader"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler collapsed"
+            data-bs-target="#navbarHeader"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h1 class="fw-bold text-primary">
+              Secure Remote Access with Twingate
+            </h1>
+
+            <p class="text-body-secondary fs-5 mt-3">
+              This phase guides you through setting up
+              <b>secure remote access</b> to your Raspberry Pi using
+              <b>Twingate</b>, without exposing your home network to the public
+              internet.
+            </p>
+
+            <p class="text-body-secondary fs-5">
+              After completing this phase, you’ll be able to safely access your
+              Raspberry Pi and network resources from anywhere in the world.<br />
+              👇👇👇👇👇
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="col-12 mt-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="alert alert-info text-center" role="alert">
+              <p>PHASE_5_START</p>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row">
+            <!-- Phase 5: Access / Twingate guide begins -->
+            <!-- Carousel (Steps 25.x): Mapping NAS / network resources — part 1 -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel13"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 25.1: Carousel slide (Instruction 25.1) -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 25.1"
+                        class="card-img-top rounded-3"
+                        src="Step_25.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 25.1: Visit the official
+                        <b>Twingate</b> website.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Open your preferred browser.<br />
+                        -----Navigate to: <code>https://www.twingate.com</code
+                        ><br />
+                        <br />
+                        💡 We’ll use Twingate to help securely access your home
+                        network remotely!
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 25.1</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 25.2: Carousel slide (Instruction 25.2) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 25.2"
+                        class="card-img-top rounded-3"
+                        src="Step_25.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 25.2: Begin creating your Twingate network.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Scroll down to the bottom of the page.<br />
+                        -----Click on the link:
+                        <b>"Create a new Twingate Network"</b><br />
+                        <br />
+                        💡 This starts the setup process for building your
+                        secure network.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 25.2</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 25.3: Carousel slide (Instruction 25.3) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 25.3"
+                        class="card-img-top rounded-3"
+                        src="Step_25.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 25.3: Enter your email and setup preferences.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Type in your email address in the field
+                        provided.<br />
+                        -----Under the question
+                        <b>"How do you plan to use Twingate?"</b>, select:
+                        <b>Home</b><br />
+                        -----Click the <b>“Get Started”</b> button.<br />
+                        <br />
+                        💡 This helps personalize your setup for home use.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 25.3</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 25.4: Carousel slide (Instruction 25.4) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 25.4"
+                        class="card-img-top rounded-3"
+                        src="Step_25.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 25.4: Choose your use case and survey options.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----For the question
+                        <b>"Which of these describe your use case?"</b>, select:
+                        <b>Homelab</b><br />
+                        -----For the question
+                        <b>"How did you hear about Twingate?"</b>, select:
+                        <b>Other</b><br />
+                        -----Click the <b>“Continue”</b> button.<br />
+                        <br />
+                        💡 These selections help Twingate tailor your
+                        onboarding.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 25.4</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 25.5: Carousel slide (Instruction 25.5) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 25.5"
+                        class="card-img-top rounded-3"
+                        src="Step_25.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 25.5: Finalize your network details.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Enter a <b>Network Name</b> and
+                        <b>Network URL</b>.<br />
+                        💡 To keep things simple, use the same name for both
+                        fields (e.g., <code>mynetwork</code>).<br />
+                        <br />
+                        ✅ This makes access and identification easier later.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 25.5</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 25.6: Carousel slide (Instruction 25.6) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 25.6"
+                        class="card-img-top rounded-3"
+                        src="Step_25.6.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 25.6: Choose a sign-in method.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Select any available sign-in method (Google ,
+                        Microsoft , Github , LinkedIn etc.).<br />
+                        -----Make sure to use the <b>same email address</b> you
+                        entered earlier for Twingate.<br />
+                        <br />
+                        💡 Using the same email simplifies authentication and
+                        reduces potential issues.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 25.6</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 25.7: Carousel slide (Instruction 25.7) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 25.7"
+                        class="card-img-top rounded-3"
+                        src="Step_25.7.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 25.7: Your account has been created!<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----You’ll see a success screen confirming account
+                        creation.<br />
+                        -----Click the button <b>“Start Setup”</b> to begin
+                        configuring your secure network.<br />
+                        <br />
+                        🎉 You're now ready to connect Twingate with your
+                        Raspberry Pi NAS!
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 25.7</small
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel controls for Steps 25.x -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel13"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel13"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Carousel (Steps 26.x): Network resource configuration — part 2 -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel14"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 26.1: Carousel slide (Instruction 26.1) -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 26.1"
+                        class="card-img-top rounded-3"
+                        src="Step_26.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 26.1: Access the Admin Console.<br /><br />
+                        🔹Breakdown:<br />
+                        -----On the Twingate onboarding page, locate the option
+                        to skip.<br />
+                        -----Click <b>"Skip to Admin Console"</b> to bypass
+                        guided onboarding.<br /><br />
+                        💡 This takes you directly to the dashboard for manual
+                        configuration.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 26.1</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 26.2: Carousel slide (Instruction 26.2) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 26.2"
+                        class="card-img-top rounded-3"
+                        src="Step_26.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 26.2: Open the Remote Networks section.<br /><br />
+                        🔹Breakdown:<br />
+                        -----You should now be on the <b>Overview</b> page of
+                        the Admin Console.<br />
+                        -----Click on the top navigation tab labeled
+                        <b>"Remote Networks"</b>.<br /><br />
+                        💡 This section is where you manage secured network
+                        locations.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 26.2</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 26.3: Carousel slide (Instruction 26.3) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 26.3"
+                        class="card-img-top rounded-3"
+                        src="Step_26.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 26.3: Add a new Remote Network.<br /><br />
+                        🔹Breakdown:<br />
+                        -----In the <b>Remote Networks</b> page, click on the
+                        <b>"+ Remote Network"</b> button.<br /><br />
+                        💡 You’ll now begin setting up a new location for remote
+                        access.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 26.3</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 26.4: Carousel slide (Instruction 26.4) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 26.4"
+                        class="card-img-top rounded-3"
+                        src="Step_26.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 26.4: Configure your new Remote Network.<br /><br />
+                        🔹Breakdown:<br />
+                        -----In the popup that appears, choose
+                        <b>"On Premise"</b> as the location type.<br />
+                        -----Name your Remote Network — e.g.,
+                        <code>Rushi_HQ</code>.<br /><br />
+                        💡 Give it a clear, recognizable name so you can
+                        identify it easily later.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 26.4</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 26.5: Carousel slide (Instruction 26.5) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 26.5"
+                        class="card-img-top rounded-3"
+                        src="Step_26.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 26.5: Verify your new Remote Network.<br /><br />
+                        🔹Breakdown:<br />
+                        -----You should now see a visual list of your created
+                        Remote Networks.<br />
+                        -----It should display key details like:<br />
+                        ------✔️ Remote Network Name<br />
+                        ------❌ Connector Status<br />
+                        ------❌ Resources<br />
+                        ------✔️ Location<br /><br />
+                        💡 Make sure your screen looks similar to the example 💡
+                        For now it will be not active. shown. This confirms the
+                        network has been added correctly.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 26.5</small
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel controls for Steps 26.x -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel14"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel14"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Carousel (Steps 27.x): Additional setup steps -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel15"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 27.1: Carousel slide (Instruction 27.1) -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 27.1"
+                        class="card-img-top rounded-3"
+                        src="Step_27.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 27.1: Begin deploying the connector.<br /><br />
+                        🔹Breakdown:<br />
+                        -----Click on the Remote Network you just created (e.g.,
+                        <b>Rushi_HQ</b>).<br />
+                        -----Then click on the <b>"Deploy Connector"</b> button
+                        to begin setup.<br /><br />
+                        💡 This connector will allow secure access between your
+                        local network and Twingate.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 27.1</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 27.2: Carousel slide (Instruction 27.2) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 27.2"
+                        class="card-img-top rounded-3"
+                        src="Step_27.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 27.2: Choose deployment method via Docker.<br /><br />
+                        🔹Breakdown:<br />
+                        -----On the deployment options screen, look for
+                        <b>"Script Based Deployments"</b>.<br />
+                        -----Click on the <b>Docker icon</b> or the option
+                        labeled Docker.<br />
+                        -----Scroll down to continue with the setup steps.<br /><br />
+                        💡 Docker is a reliable and quick method for deploying
+                        Twingate connectors.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 27.2</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 27.3: Carousel slide (Instruction 27.3) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 27.3"
+                        class="card-img-top rounded-3"
+                        src="Step_27.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 27.3: Generate connector authentication tokens.<br /><br />
+                        🔹Breakdown:<br />
+                        -----Locate the <b>"Generate Tokens"</b> section.<br />
+                        -----Click the <b>"Generate Tokens"</b> button.<br />
+                        -----Wait for a few seconds while your secure tokens are
+                        created.<br /><br />
+                        🛑 <b>Important:</b> Do not share these tokens with
+                        anyone. They are sensitive and should be kept private!
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 27.3</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 27.4: Carousel slide (Instruction 27.4) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 27.4"
+                        class="card-img-top rounded-3"
+                        src="Step_27.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 27.4: Authenticate if prompted.<br /><br />
+                        🔹Breakdown:<br />
+                        -----If you're asked to authenticate before generating
+                        or using tokens,<br />
+                        -----Click on the <b>"Authenticate"</b> button and
+                        proceed with verification.<br /><br />
+                        🔒 This is a one-time secure check to ensure only
+                        authorized users can proceed.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 27.4</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 27.5: Carousel slide (Instruction 27.5) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 27.5"
+                        class="card-img-top rounded-3"
+                        src="Step_27.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 27.5: Copy the deployment command.<br /><br />
+                        🔹Breakdown:<br />
+                        -----Scroll down until you see a block of auto-generated
+                        Docker commands.<br />
+                        -----Click on the <b>"Copy Command"</b> button to copy
+                        the script to your clipboard.<br /><br />
+                        💡 This command will be used on your Raspberry Pi to
+                        deploy the connector.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 27.5</small
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel controls for Steps 27.x -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel15"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel15"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Carousel (Steps 28.x): Docker & Twingate connector deployment -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel16"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 28.1: Carousel slide (Instruction 28.1) -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 28.1"
+                        class="card-img-top rounded-3"
+                        src="Step_28.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 28.1: Click on the Start menu, type
+                        <strong>cmd</strong>, and select
+                        <strong>Command Prompt</strong> from the search results.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 28.1</small
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 28.2: Carousel slide (Instruction 28.2) -->
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 28.2"
+                        class="card-img-top rounded-3"
+                        src="Step_28.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 28.2: Connect to the Raspberry Pi using SSH.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Open Command Prompt and type
+                        <strong>ssh pi@warden</strong>, then press
+                        <strong>Enter</strong>.<br />
+                        -----If prompted, type <strong>yes</strong> to accept
+                        the host key and enter the Raspberry Pi password.<br />
+                        -----Once authenticated, you will be logged into the
+                        Raspberry Pi terminal successfully.<br />
+                        <br />
+                        💡 A successful connection will display the Debian/Linux
+                        welcome message and the
+                        <strong>pi@warden:~$</strong> prompt.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 28.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 28.3: Carousel slide (Instruction 28.3) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 28.3"
+                        class="card-img-top rounded-3"
+                        src="Step_28.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 28.3: Update and upgrade the Raspberry Pi system
+                        packages.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Ensure your system is connected to the internet.<br />
+                        -----Run the command below to update package lists and
+                        install available upgrades.<br />
+                        <br />
+                      </p>
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">sudo apt update && sudo apt upgrade</code></pre>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group">
+                          <button
+                            class="btn btn-sm btn-outline-secondary copy-btn"
+                            data-code="sudo apt update && sudo apt upgrade"
+                            type="button"
+                          >
+                            Copy
+                          </button>
+                        </div>
+                        <small class="text-body-secondary"
+                          >Instruction 28.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 28.4: Carousel slide (Instruction 28.4) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 28.4"
+                        class="card-img-top rounded-3"
+                        src="Step_28.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 28.4: Install Docker on the Raspberry Pi.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Docker is required to run the Twingate
+                        connector.<br />
+                        -----Use the following command to install Docker and
+                        required components.<br />
+                        <br />
+                      </p>
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">sudo apt install docker.io -y</code></pre>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group">
+                          <button
+                            class="btn btn-sm btn-outline-secondary copy-btn"
+                            data-code="sudo apt install docker.io -y"
+                            type="button"
+                          >
+                            Copy
+                          </button>
+                        </div>
+                        <small class="text-body-secondary"
+                          >Instruction 28.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 28.5.1: Carousel slide (Instruction 28.5.1) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 28.5.1"
+                        class="card-img-top rounded-3"
+                        src="Step_28.5.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 28.5.1: Prepare the system for deploying the
+                        Twingate connector.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Ensure Docker installation completed without
+                        errors.<br />
+                        -----Verify internet connectivity before pulling Docker
+                        images.<br />
+                        <br />
+                        💡 This step ensures a smooth Twingate deployment.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 28.5.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 28.5.2: Carousel slide (Instruction 28.5.2) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 28.5.2"
+                        class="card-img-top rounded-3"
+                        src="Step_28.5.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 28.5.2: Deploy the Twingate connector using
+                        Docker.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Paste the Twingate-provided Docker command into the
+                        terminal.<br />
+                        -----This command pulls the connector image and runs it
+                        automatically.<br />
+                        -----A successful pull confirms the connector is running
+                        correctly.<br />
+                        <br />
+                      </p>
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">sudo + your docker command....</code></pre>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group">
+                          <button
+                            class="btn btn-sm btn-outline-secondary copy-btn"
+                            data-code="sudo + your docker command...."
+                            type="button"
+                          >
+                            Copy
+                          </button>
+                        </div>
+                        <small class="text-body-secondary"
+                          >Instruction 28.5.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 28.6: Carousel slide (Instruction 28.6) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 28.6"
+                        class="card-img-top rounded-3"
+                        src="Step_28.6.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 28.6: Verify that the Twingate connector container
+                        is running.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Use the Docker command below to list running
+                        containers.<br />
+                        -----Confirm the Twingate connector shows a
+                        <strong>healthy</strong> status.<br />
+                        <br />
+                        ✅ A healthy status confirms a successful deployment.
+                      </p>
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">sudo docker ps</code></pre>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group">
+                          <button
+                            class="btn btn-sm btn-outline-secondary copy-btn"
+                            data-code="sudo docker ps"
+                            type="button"
+                          >
+                            Copy
+                          </button>
+                        </div>
+                        <small class="text-body-secondary"
+                          >Instruction 28.6</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel controls for Steps 28.x -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel16"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel16"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Carousel (Steps 29.x): Twingate Admin — resources and permissions -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel17"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 29.1: Carousel slide (Instruction 29.1) -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 29.1"
+                        class="card-img-top rounded-3"
+                        src="Step_29.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 29.1: Open the Twingate Admin Dashboard.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Log in to your Twingate admin account using a web
+                        browser.<br />
+                        -----Navigate to the
+                        <strong>Network Overview</strong> page to manage your
+                        setup.<br />
+                        <br />
+                        💡 This dashboard is used to manage networks, resources,
+                        and access.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 29.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 29.2: Carousel slide (Instruction 29.2) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 29.2"
+                        class="card-img-top rounded-3"
+                        src="Step_29.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 29.2: Navigate to the Resources section in
+                        Twingate.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click on the <strong>Resources</strong> tab from
+                        the Network menu.<br />
+                        -----This section allows you to define internal services
+                        securely.<br />
+                        <br />
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 29.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 29.3: Carousel slide (Instruction 29.3) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 29.3"
+                        class="card-img-top rounded-3"
+                        src="Step_29.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 29.3: Create a new protected resource.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click on <strong>+ Resource</strong> to add a new
+                        service.<br />
+                        -----Enter a resource name (e.g., NAS) and its internal
+                        IP address.<br />
+                        <br />
+                        💡 This resource represents an internal system you want
+                        to access securely.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 29.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 29.4: Carousel slide (Instruction 29.4) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 29.4"
+                        class="card-img-top rounded-3"
+                        src="Step_29.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 29.4: Assign access permissions to the resource.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Select who can access the resource (e.g., Everyone
+                        or specific users).<br />
+                        -----Click <strong>Grant Access</strong> to apply the
+                        permissions.<br />
+                        <br />
+                        🔐 Access control ensures only authorized users can
+                        reach the resource.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 29.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 29.5: Carousel slide (Instruction 29.5) -->
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 29.5"
+                        class="card-img-top rounded-3"
+                        src="Step_29.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 29.5: Confirm the resource has been added
+                        successfully.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Verify the resource appears in the Resources
+                        list.<br />
+                        -----Ensure the correct IP address and remote network
+                        are displayed.<br />
+                        <br />
+                        ✅ Your internal service is now securely accessible
+                        through Twingate.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 29.5</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel controls for Steps 29.x -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel17"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel17"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Carousel (Steps 30.x): Twingate client installation & initial setup -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel18"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 30.1: Carousel slide (Instruction 30.1) -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 30.1"
+                        class="card-img-top rounded-3"
+                        src="Step_30.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 30.1: Download the Twingate client for Windows.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Open a web browser and visit the official Twingate
+                        download page.<br />
+                        -----Click on <strong>Download for Windows</strong> to
+                        obtain the installer.<br />
+                        <br />
+                        💡 This client is required to securely access protected
+                        resources.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 30.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 30.2: Carousel slide (Instruction 30.2) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 30.2"
+                        class="card-img-top rounded-3"
+                        src="Step_30.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 30.2: Open the Twingate application on Windows.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Install the downloaded Twingate installer if not
+                        already installed.<br />
+                        -----Search for <strong>Twingate</strong> in the Start
+                        menu and open the app.<br />
+                        <br />
+                        ✅ The app icon confirms a successful installation.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 30.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 30.3: Carousel slide (Instruction 30.3) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 30.3"
+                        class="card-img-top rounded-3"
+                        src="Step_30.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 30.3: Complete the initial welcome setup.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Review the welcome information displayed by
+                        Twingate.<br />
+                        -----Click <strong>Continue</strong> to proceed with the
+                        setup process.<br />
+                        <br />
+                        💡 This screen provides a brief overview of how Twingate
+                        works.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 30.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 30.4: Carousel slide (Instruction 30.4) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 30.4"
+                        class="card-img-top rounded-3"
+                        src="Step_30.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 30.4: Connect the client to your Twingate
+                        network.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Enter your
+                        <strong>Twingate network name</strong> provided in the
+                        welcome email.<br />
+                        -----Click <strong>Join Network</strong> to continue.<br />
+                        <br />
+                        🔐 Once connected, you can securely access assigned
+                        resources.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 30.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel controls for Steps 30.x -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel18"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel18"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Phase 5 completion card and navigation to Phase 6 -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="alert alert-info text-center" role="alert">
+                    <p>PHASE_5_COMPLETE</p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body text-center">
+                  <a
+                    href="../P6_Installing_Gigolo_And_Twingate_Client_on_Linux/Installing_Gigolo_And_Twingate_Client_on_Linux.html"
+                    class="btn btn-success btn-lg fw-bold"
+                    style="min-width: 280px"
+                  >
+                    Go to phase 6 –
+                    Installing_Gigolo_And_Twingate_Client_on_Linux
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container-fluid footer-custom mt-5">
+      <div class="container py-5">
+        <div class="row gy-4">
+          <!-- Project Info -->
+          <div class="col-12 col-md-4">
+            <h5 class="text-white mb-3">Pi-Vate Cloud</h5>
+            <p class="text-light small">
+              Pi-Vate Cloud is a practical documentation project for building a
+              personal Raspberry Pi server, configuring essential services, and
+              securely accessing your home lab from anywhere.
+            </p>
+          </div>
+
+          <!-- Navigation -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Navigation</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+                >
+                  Home
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="BAKE_YOUR_RPI.html">
+                  Bake Your Raspberry Pi
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="Config_RPI_&_OVM.html">
+                  Configure Raspberry Pi & OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="Config_RPI_&_Local_Sys.html"
+                >
+                  Local System Integration
+                </a>
+              </li>
+
+              <!-- ✅ Phase 4 added -->
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="SERVICES_SETUP.html">
+                  Service Installation & Configuration
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="ACCESS_TWINGATE.html">
+                  Secure Remote Access
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Resources</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.raspberrypi.com/documentation/"
+                  target="_blank"
+                >
+                  Raspberry Pi Documentation
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.openmediavault.org/"
+                  target="_blank"
+                >
+                  OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.twingate.com/"
+                  target="_blank"
+                >
+                  Twingate
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+                  target="_blank"
+                >
+                  GitHub Repository
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 pt-4 border-top border-secondary"
+        >
+          <p class="text-light small mb-2 mb-md-0">
+            © 2025 Pi-Vate Cloud · Built for learning, experimentation, and
+            homelabs.
+          </p>
+
+          <div class="d-flex gap-3">
+            <a
+              href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+              target="_blank"
+              class="text-light small text-decoration-none"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+              class="text-light small text-decoration-none"
+            >
+              Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      .footer-custom {
+        background-color: #333333;
+        color: white;
+      }
+      footer {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .form-control {
+        max-width: 300px;
+      }
+      .bi {
+        transition: transform 0.2s ease-in-out;
+      }
+      .bi:hover {
+        transform: scale(1.1);
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".copy-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const code = this.getAttribute("data-code");
+            navigator.clipboard
+              .writeText(code)
+              .then(() => {
+                this.textContent = "Copied!";
+                this.classList.add("btn-success"); // Optional: Change color
+                this.classList.remove("btn-outline-secondary");
+
+                // Reset button text after 2 seconds
+                setTimeout(() => {
+                  this.textContent = "Copy";
+                  this.classList.remove("btn-success");
+                  this.classList.add("btn-outline-secondary");
+                }, 2000);
+              })
+              .catch((err) => console.error("Error copying text", err));
+          });
+        });
+      });
+    </script>
+    <!-- JavaScript for copy functionality -->
+    <script>
+      function copyCode() {
+        const codeElement = document.getElementById("automation-code");
+        if (!codeElement) {
+          alert("Could not find code element");
+          return;
+        }
+
+        // Create a temporary textarea element to copy from
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = codeElement.textContent;
+        document.body.appendChild(tempTextArea);
+
+        // Select the text and copy
+        tempTextArea.select();
+        tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+        try {
+          const successful = document.execCommand("copy");
+          const copyBtn = document.getElementById("copyButton");
+          copyBtn.textContent = successful ? "Copied!" : "Failed to copy";
+
+          setTimeout(function () {
+            copyBtn.textContent = "Copy Code";
+          }, 2000);
+        } catch (err) {
+          console.error("Unable to copy", err);
+        }
+
+        // Remove the temporary element
+        document.body.removeChild(tempTextArea);
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

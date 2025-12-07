@@ -1,0 +1,2817 @@
+<!DOCTYPE html>
+
+<html data-bs-theme="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+      name="author"
+    />
+    <meta content="Hugo 0.122.0" name="generator" />
+
+    <title>Config_RPI_&_OVM</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+      rel="stylesheet"
+    />
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="/docs/5.3/assets/img/favicons/apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link href="/docs/5.3/assets/img/favicons/manifest.json" rel="manifest" />
+    <link
+      href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
+      rel="mask-icon"
+    />
+    <link href="/docs/5.3/assets/img/favicons/favicon.ico" rel="icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta content="#712cf9" name="theme-color" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      .card {
+        height: 100%;
+      }
+      /* Make the modal image cover the full screen */
+      .zoom-img {
+        width: 100vw; /* Full screen width */
+        height: 100vh; /* Full screen height */
+        object-fit: contain; /* Keep aspect ratio */
+        cursor: pointer; /* Indicate click to close */
+      }
+    </style>
+  </head>
+
+  <body>
+    <header data-bs-theme="dark">
+      <div class="text-bg-dark collapse" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <p class="text-body-secondary"></p>
+
+              <h4>⚠️ Disclaimer ⚠️</h4>
+              <br />
+              The commands and instructions provided on this website are for
+              <b>educational and informational purposes only</b>. We are not
+              responsible for any
+              <b>data loss, system damage, or security risks</b> that may arise
+              from using these commands. Always ensure you
+              <b>understand</b> what each command does before executing it, and
+              create backups if necessary.<br />
+              <b>Use them at your own risk.</b>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="#"
+            ><strong>Disclaimer ↑</strong></a
+          >
+          <button
+            aria-controls="navbarHeader"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler collapsed"
+            data-bs-target="#navbarHeader"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h1 class="fw-bold text-primary">
+              Configure Raspberry Pi & OpenMediaVault
+            </h1>
+
+            <p class="text-body-secondary fs-5 mt-3">
+              This phase focuses on <b>System preparation</b>. You’ll identify
+              your Raspberry Pi on the network, connect to it using <b>SSH</b>,
+              and perform critical <b>system updates and upgrades</b>.
+            </p>
+
+            <p class="text-body-secondary fs-5">
+              These steps ensure your Raspberry Pi is secure, updated, and ready
+              for installing services like OpenMediaVault and other tools.<br />
+              👇👇👇👇👇
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row">
+            <!-- SITE CONTENT START: Phase 2 — Installing OpenMediaVault (OMV) -->
+            <!-- Info Card: Phase marker and brief phase description -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="alert alert-info text-center" role="alert">
+                    <p style="color: lightgreen">PHASE_2_START<br /></p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Instruction Card: Step 10 (find Pi IP) with image -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="p-3">
+                  <img
+                    alt="Code Snippet Thumbnail"
+                    class="card-img-top rounded-3"
+                    src="Step_10.png"
+                    style="
+                      max-width: 90%;
+                      display: block;
+                      margin: 0 auto;
+                      padding: 5px;
+                      border: 3px solid #1bfd9c;
+                    "
+                  />
+                </div>
+
+                <div class="card-body">
+                  <p class="card-text">
+                    Step 10: Know your Raspberry Pi’s IP address via your
+                    router’s admin page.<br />
+                    <br />
+                    🔹Breakdown:<br />
+                    -----Log in to your router’s admin page from a browser
+                    (usually <code>192.168.1.1</code> or
+                    <code>192.168.0.1</code>).<br />
+                    -----Look for a list of connected devices.<br />
+                    -----Find the entry matching your Pi’s hostname (e.g.,
+                    <code>werden</code>) or MAC address.<br />
+                    <br />
+                    💡 You need this IP to connect via SSH or web interfaces!
+                    🌐🔍
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Instruction 10</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Instruction Card: Step 11 (open Command Prompt) with image -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="p-3">
+                  <img
+                    alt="Code Snippet Thumbnail"
+                    class="card-img-top rounded-3"
+                    src="Step_11.png"
+                    style="
+                      max-width: 90%;
+                      display: block;
+                      margin: 0 auto;
+                      padding: 5px;
+                      border: 3px solid #1bfd9c;
+                    "
+                  />
+                </div>
+
+                <div class="card-body">
+                  <p class="card-text">
+                    Step 11: Open the Command Prompt on your computer.<br />
+                    <br />
+                    🔹Breakdown:<br />
+                    -----Click the <strong>Start</strong> menu (Windows icon in
+                    bottom-left corner).<br />
+                    -----Type <code>cmd</code> in the search bar.<br />
+                    -----Press <strong>Enter</strong> or click on
+                    <strong>Command Prompt</strong> from the results.<br />
+                    <br />
+                    💡 You’ll use CMD to SSH into your Raspberry Pi and perform
+                    remote configurations! 💻🖱️
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Instruction 11</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Carousel: Steps 12-13 — SSH into Pi and update/upgrade -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel3"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Slide: SSH into Raspberry Pi (how-to) -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 12"
+                        class="card-img-top rounded-3"
+                        src="Step_12.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 12: SSH into your Raspberry Pi using Command
+                        Prompt.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----In the Command Prompt window, enter the following
+                        command:<br />
+                        <code
+                          >ssh &lt;username&gt;@&lt;ip_address_of_RPI&gt;</code
+                        ><br />
+                        -----Alternatively, if you set a local hostname during
+                        setup:<br />
+                        <code>ssh &lt;username&gt;@&lt;localname&gt;</code
+                        ><br />
+                        -----When prompted, enter the password you configured
+                        earlier (e.g., <strong>root</strong>).<br />
+                        <br />
+                        💡 Example: <code>ssh pi@192.168.100.101</code> or
+                        <code>ssh pi@warden</code> 🧠🔐<br />
+                        🛑 If you get a prompt asking to trust the key, type
+                        <code>yes</code> and press Enter.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 12</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide: Run apt update/upgrade sequence -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 13.1"
+                        class="card-img-top rounded-3"
+                        src="Step_13.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 13.1: Update and upgrade your Raspberry Pi system
+                        packages.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After successfully logging in via SSH, you'll want
+                        to ensure your Pi is up-to-date.<br />
+                        -----Use the following command to update the package
+                        list and upgrade installed packages.<br />
+                        <br />
+                      </p>
+                      <!-- Code Copy: system update command (copyable) -->
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">sudo apt update && sudo apt upgrade</code></pre>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group">
+                          <button
+                            class="btn btn-sm btn-outline-secondary copy-btn"
+                            data-code="sudo apt update && sudo apt upgrade"
+                            type="button"
+                          >
+                            Copy
+                          </button>
+                        </div>
+                        <small class="text-body-secondary"
+                          >Instruction 13.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide: Confirm upgrade prompts (type Y) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 13.2"
+                        class="card-img-top rounded-3"
+                        src="Step_13.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">Step 13.2: Type "Y"<br /></p>
+
+                      <p>
+                        💡 Tip: You might be asked to confirm during upgrade —
+                        type <code>Y</code> and hit Enter! 🛠️🔐
+                      </p>
+                      <br />
+                      <small class="text-body-secondary"
+                        >Instruction 13.2</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide: Let the upgrade process complete (wait) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 13.3"
+                        class="card-img-top rounded-3"
+                        src="Step_13.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 13.3: Sit back and let your Raspberry Pi complete
+                        the update and upgrade process.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----The update and upgrade commands can take several
+                        minutes to finish.<br />
+                        -----Your Pi is downloading and installing package
+                        updates.<br />
+                        <br />
+                        💡 This is the perfect time to stretch, relax, or grab a
+                        cup of coffee. ☕🍪<br />
+                        🚀 Don’t close the terminal — just wait until the
+                        process completes.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 13.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide: Monitor upgrade progress (progress bar info) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 13.4"
+                        class="card-img-top rounded-3"
+                        src="Step_13.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 13.4: Monitor the green progress bar during the
+                        upgrade process.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----As the packages are being upgraded, you’ll see a
+                        green <code>####</code> progress bar in the terminal.<br />
+                        -----This indicates how far along the system is in
+                        processing updates.<br />
+                        -----Each section of the bar represents a completed step
+                        in the installation.<br />
+                        <br />
+                        💡 If the bar freezes momentarily, don’t worry — some
+                        packages take longer. 🟩⏳
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 13.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide: Prepare for OMV installation (prereqs) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 14.1"
+                        class="card-img-top rounded-3"
+                        src="Step_14.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 14.1: Copy and paste the command below to install
+                        OpenMediaVault (OMV).<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----This script will download and install OMV
+                        automatically on your Raspberry Pi.<br />
+                        -----Make sure you are still logged in to the Pi via SSH
+                        before running this command.<br />
+                        <br />
+                        💡 This step will take some time — let the script finish
+                        completely! ⚙️📦
+                      </p>
+                      <!-- Code Copy: OMV install command (copyable) -->
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">sudo wget -O - https://raw.githubusercontent.com/OpenMediaVault-Plugin-Developers/installScript/master/install | sudo bash</code></pre>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group">
+                          <button
+                            class="btn btn-sm btn-outline-secondary copy-btn"
+                            data-code="sudo wget -O - https://raw.githubusercontent.com/OpenMediaVault-Plugin-Developers/installScript/master/install | sudo bash"
+                            type="button"
+                          >
+                            Copy
+                          </button>
+                        </div>
+                        <small class="text-body-secondary"
+                          >Instruction 14.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide: Confirm OMV installation success -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 14.2"
+                        class="card-img-top rounded-3"
+                        src="Step_14.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 14.2: Confirm OpenMediaVault was installed
+                        successfully.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After running the install script, the terminal will
+                        display a series of setup and configuration messages.<br />
+                        -----If the installation is successful, you'll see final
+                        lines like:<br />
+                        <code
+                          >&lt;&lt;&lt; Installation complete &gt;&gt;&gt;</code
+                        >
+                        or <code>The system will reboot now !</code><br />
+                        -----The prompt will return to
+                        <code>pi@warden:~$</code> after setup finishes.<br />
+                        <br />
+                        💡 If you see these messages, OMV is ready to use! ✅🌐
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 14.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls: navigation for SSH/update slides -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel3"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel3"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Carousel: OMV post-install configuration steps -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel4"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Slide: OMV UI — initial post-install step -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 15.1"
+                        class="card-img-top rounded-3"
+                        src="Step_15.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 15.1: Verify the IP address of your Raspberry Pi
+                        again.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After installing OpenMediaVault, the Raspberry Pi
+                        may have rebooted.<br />
+                        -----This could result in a new IP address being
+                        assigned by your router.<br />
+                        -----Repeat <strong>Step 10</strong> by visiting your
+                        router's admin page and checking the connected devices
+                        list.<br />
+                        <br />
+                        💡 Tip: Look for your Pi’s hostname or MAC address to
+                        confirm it’s the same device. 🧠🔍
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 15.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide: OMV UI — follow-up configuration step -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 15.2"
+                        class="card-img-top rounded-3"
+                        src="Step_15.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 15.2: SSH back into your Raspberry Pi using the new
+                        or confirmed IP address.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After verifying the Pi’s current IP (see Step
+                        15.1), open your Command Prompt.<br />
+                        -----Use the same SSH login command you used in
+                        <strong>Step 12</strong>:<br />
+                        <code>ssh &lt;username&gt;@&lt;new_ip_address&gt;</code>
+                        or <code>ssh &lt;username&gt;@&lt;hostname&gt;</code
+                        ><br />
+                        -----Enter your password when prompted (e.g.,
+                        <strong>root</strong>).<br />
+                        <br />
+                        💡 Example: <code>ssh pi@192.168.100.101</code> or
+                        <code>ssh pi@warden</code> 🔁🔐
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 15.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls: navigation for OMV post-install slides -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel4"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel4"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Carousel: Storage & Services — setup walkthrough -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel5"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Slide: Create storage/RAID or disk management intro -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 15.3"
+                        class="card-img-top rounded-3"
+                        src="Step_15.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 15.3: Open your browser and enter the confirmed
+                        Raspberry Pi IP address to access OpenMediaVault.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Launch any web browser (e.g., Chrome, Firefox,
+                        Edge).<br />
+                        -----In the address bar, type the IP address you found
+                        in Step 15.1.<br />
+                        -----Press <strong>Enter</strong> to load the
+                        OpenMediaVault web interface.<br />
+                        <br />
+                        💡 Example: <code>192.168.100.101</code>🌐💡<br />
+                        ⚠️ Make sure you're on the same network as your
+                        Raspberry Pi.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 15.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 2 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 15.4"
+                        class="card-img-top rounded-3"
+                        src="Step_15.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 15.4: You should now see the OpenMediaVault (OMV)
+                        web interface in your browser.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----The interface will show a login screen with the OMV
+                        logo.<br />
+                        -----You’ll be prompted to enter a username and password
+                        (default credentials if not changed).<br />
+                        -----The layout includes a sidebar menu with options
+                        like <strong>System</strong>, <strong>Storage</strong>,
+                        <strong>Services</strong>, and more.<br />
+                        <br />
+                        💡 If you see the OMV dashboard, installation was
+                        successful! 🎉🖥️<br />
+                        ⚠️ If nothing loads, double-check the IP and that your
+                        Pi is powered on and connected.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 15.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 3 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 15.5"
+                        class="card-img-top rounded-3"
+                        src="Step_15.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 15.5: Enter the default login credentials to access
+                        OpenMediaVault.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----On the OMV login screen, use the following
+                        credentials:<br />
+                        <br />
+                        <strong>Username:</strong> <code>admin</code><br />
+                        <strong>Password:</strong> <code>openmediavault</code
+                        ><br />
+                        <br />
+                        -----These are the default credentials set by
+                        OpenMediaVault for the web interface.<br />
+                        -----You’ll be able to change the password after logging
+                        in.<br />
+                        <br />
+                        💡 If login fails, make sure there are no typos or try
+                        reloading the page. 🔐🧑‍💻
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 15.5</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 4 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 15.6"
+                        class="card-img-top rounded-3"
+                        src="Step_15.6.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 15.6: You've successfully logged in and can now see
+                        the OpenMediaVault (OMV) dashboard.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After entering the correct credentials, you’ll be
+                        directed to the OMV main interface.<br />
+                        -----This includes a sidebar menu with sections like
+                        <strong>System</strong>, <strong>Storage</strong>,
+                        <strong>Access Rights Management</strong>, and more.<br />
+                        -----You’ll also see system information like CPU usage,
+                        memory usage, and uptime.<br />
+                        <br />
+                        💡 You now have full access to manage storage, users,
+                        and services — welcome to your new NAS! 📊🗂️🚀
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 15.6</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel5"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel5"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <!-- Step 16.1 Image -->
+
+                <div class="p-3">
+                  <img
+                    alt="Change OMV Password"
+                    class="card-img-top rounded-3"
+                    src="Step_16.1.png"
+                    style="padding: 5px; border: 3px solid #1bfd9c"
+                  />
+                </div>
+
+                <div class="card-body">
+                  <p class="card-text">
+                    <b>🔐 Step 16.1: Change the Default OMV Web Password</b
+                    ><br />
+                    <br />
+                    <b>🔹 Breakdown:</b><br />
+                    - After logging in to the OMV dashboard, locate the
+                    <b>top-right corner profile icon (👤)</b>.<br />
+                    - Click it to open the dropdown menu.<br />
+                    - Select <b>Change Password</b>.<br />
+                    <br />
+                    💡 <b>Tip:</b> Choose a strong password to protect your NAS
+                    system. Keep it saved securely! 🔒<br />
+                    <b
+                      >Eg: <b style="color: lightpink">raspberry</b> (It is just
+                      used for demonstration purpose.)</b
+                    >
+                  </p>
+                  <!-- Step 16.2 Image -->
+
+                  <div class="p-3">
+                    <img
+                      alt="Password Change UI in OMV"
+                      class="card-img-top rounded-3"
+                      src="Step_16.2.png"
+                      style="padding: 5px; border: 3px solid #1bfd9c"
+                    />
+                  </div>
+
+                  <p class="card-text mt-3">
+                    <b>✅ Step 16.2: Password Changed Successfully</b><br />
+                    <br />
+                    <b>🔹 Breakdown:</b><br />
+                    - Once the password change is confirmed, you’ll be
+                    redirected or see a success message.<br />
+                    - You can now log in with your new password in future
+                    sessions.<br />
+                    - The change is applied immediately — no reboot required.<br />
+                    <br />
+                    💡 <b>Next Step:</b> With admin access secured, you can
+                    begin setting up storage, users, and services in OMV! 🚀
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div></div>
+                    <small class="text-body-secondary"
+                      >Instruction 16.1 & 16.2</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Instruction Carousel 6 -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel6"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Slides -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.1"
+                        class="card-img-top rounded-3"
+                        src="Step_17.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.1: ⚠️ Backup your external drive before plugging
+                        it in.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Before connecting your external storage (e.g., 1TB
+                        hard disk), make sure to back up all existing files.<br />
+                        -----The drive must be formatted and completely empty
+                        for OMV to use it properly.<br />
+                        -----Plugging in a used drive without formatting will
+                        result in data loss.<br />
+                        <br />
+                        -----Plug in the disk now before proceeding further.<br />
+                        <br />
+                        💡 Always copy important data to another device before
+                        proceeding — formatting will erase everything! 🛡️🧯
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 2 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.2"
+                        class="card-img-top rounded-3"
+                        src="Step_17.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.2: You should now see the OpenMediaVault
+                        dashboard again.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After logging in and changing the password, the OMV
+                        dashboard is visible once more.<br />
+                        -----Now that your external USB drive is connected, we
+                        will begin configuring it through OMV.<br />
+                        -----You’ll prepare the drive so it can be used for
+                        storage and file sharing.<br />
+                        <br />
+                        💡 This is where you turn your external disk into a
+                        fully functional NAS storage volume! 💾⚙️
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 3 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.3"
+                        class="card-img-top rounded-3"
+                        src="Step_17.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.3: Check if the USB disk is detected by OMV.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click on the <b>"Storage"</b> menu in the left
+                        sidebar.<br />
+                        -----Then select the <b>"Disks"</b> tab.<br />
+                        -----You should see your newly connected USB hard drive
+                        listed here.<br />
+                        -----Details such as model, size, and device name (like
+                        <code>/dev/sda</code>) will be shown.<br />
+                        <br />
+                        💡 If the disk is not listed, try unplugging and
+                        reconnecting it, or refreshing the page. 🔄🔌
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 4 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.4"
+                        class="card-img-top rounded-3"
+                        src="Step_17.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.4: Navigate to the File Systems section.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----In the sidebar under <b>Storage</b>, click on
+                        <b>"File Systems"</b>.<br />
+                        -----This page shows the file systems currently mounted
+                        on your OMV system.<br />
+                        -----It should be <b>empty for now</b>, since we haven’t
+                        formatted or mounted the USB drive yet.<br />
+                        <br />
+                        💡 This is where you'll mount and manage volumes after
+                        formatting.<br />
+                        For now, just verify it's blank. 📂🧭
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 5 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.5"
+                        class="card-img-top rounded-3"
+                        src="Step_17.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.5: Open the mount dialog to prepare your disk
+                        for use.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----In the <b>File Systems</b> tab, click the
+                        <b>blue triangle icon</b> -----This will open the
+                        <b>"Mount"</b> window.<br />
+                        -----In the <b>"File System"</b> dropdown menu, select
+                        the disk you want to mount (e.g., your USB drive).<br />
+                        -----In the <b>"Usage Warning Threshold"</b> section,
+                        choose a percentage value (e.g., 85%).<br />
+                        -----OMV will notify you if the disk usage exceeds this
+                        threshold.<br />
+                        <br />
+                        -----Click "Save"<br />
+                        <br />
+                        💡 Setting a usage warning helps prevent surprises when
+                        your storage starts to fill up. 📉🛎️
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.5</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 6 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.6"
+                        class="card-img-top rounded-3"
+                        src="Step_17.6.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.6: Check if the “Shared Folders” section is
+                        currently empty.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----In the left sidebar, under the
+                        <b>"Storage"</b> section, click on
+                        <b>"Shared Folders"</b>.<br />
+                        -----This tab will list any shared folders available in
+                        your OMV system.<br />
+                        -----Since no folders have been created yet, this page
+                        should be <b>empty</b> for now.<br />
+                        <br />
+                        💡 Shared folders are where you’ll store and organize
+                        data — we’ll set one up soon! 🗂️📁
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.6</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 7 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.7"
+                        class="card-img-top rounded-3"
+                        src="Step_17.7.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.7: Finalize your changes by clicking the yellow
+                        "Apply" tick at the top.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After mounting the disk and checking shared
+                        folders, a yellow bar should appear at the top of the
+                        OMV web interface.<br />
+                        -----Click the <b>tick/checkmark icon</b> -----OMV will
+                        begin applying the configuration updates made so far.<br />
+                        <br />
+                        💡 Always click this yellow tick after changes, or they
+                        won’t take effect! ✅🔧
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.7</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 8 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.8"
+                        class="card-img-top rounded-3"
+                        src="Step_17.8.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.8: Create your first shared folder on the
+                        mounted USB disk.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Go to <b>Storage → Shared Folders</b> from the left
+                        sidebar.<br />
+                        -----Click the <b>“+” (Add)</b> button at the top.<br />
+                        -----In the <b>Name</b> field, enter a folder name
+                        (e.g., <code>NAS</code>).<br />
+                        -----In the <b>File System</b> dropdown, select your
+                        mounted USB disk.<br />
+                        -----In the <b>Relative Path</b> field, enter the folder
+                        name again with a <b>forward slash</b> (e.g.,
+                        <code>NAS/</code>).<br />
+                        -----Click <b>Save</b> to confirm.<br />
+                        <br />
+                        💡 This folder will store all your files — make sure to
+                        name it clearly! 📂💾
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.8</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 9 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.9"
+                        class="card-img-top rounded-3"
+                        src="Step_17.9.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.9: Confirm that your shared folder appears
+                        correctly in the list.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Once saved, your new shared folder (e.g.,
+                        <code>NAS</code>) should now appear in the
+                        <b>Shared Folders</b> list.<br />
+                        -----It will show details like <b>Name</b>,
+                        <b>Device</b>, <b>Relative Path</b>, and more.<br />
+                        -----Refer to the image provided to verify your folder
+                        looks similar.<br />
+                        <br />
+                        💡 Make sure the folder appears exactly as configured.
+                        If not, go back and double-check the name, path, and
+                        selected disk. ✔️🗂️<br />
+                        <br />
+                        ⚠️ Follow the next steps carefully — this folder will be
+                        used for all your shared network storage!
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.9</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 10 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.10"
+                        class="card-img-top rounded-3"
+                        src="Step_17.10.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.10: Set up permissions for your shared
+                        folder.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----In the <b>Shared Folders</b> list, locate the
+                        folder you just created (e.g., <code>NAS</code>).<br />
+                        -----Click on it to select it.<br />
+                        -----Then, click on the <b>blue key icon</b> at the top
+                        — this opens the <b>Permissions</b> menu.<br />
+                        <br />
+                        💡 Proper permissions are essential for controlling who
+                        can read or write to your shared folder! 🔐🧑‍💻
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.10</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 11 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.11"
+                        class="card-img-top rounded-3"
+                        src="Step_17.11.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.11: Assign Read/Write permissions to your shared
+                        folder.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----On the <b>Permissions</b> window that appears after
+                        clicking the key icon:<br />
+                        -----Set <b>"Read/Write"</b> access for both the
+                        <b>User</b> and the <b>Group</b>.<br />
+                        -----This allows full access for the selected users or
+                        groups to read and modify files.<br />
+                        -----Click <b>Save</b> to apply the permission
+                        settings.<br />
+                        <br />
+                        💡 This ensures authorized users can fully interact with
+                        the NAS storage! ✅📁
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.11</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Slide 12 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 17.12"
+                        class="card-img-top rounded-3"
+                        src="Step_17.12.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 17.12: Finalize your permission settings by
+                        applying the changes.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After setting Read/Write permissions, a
+                        <b>yellow bar</b> will appear at the top of the page.<br />
+                        -----Click on the <b>yellow tick icon</b> to apply and
+                        save the pending changes.<br />
+                        <br />
+                        💡 Always apply changes after any configuration to
+                        ensure they take effect! 🛠️✔️
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 17.12</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END auto-generated slides -->
+              </div>
+              <!-- Carousel Controls -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel6"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel6"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Code Copy Card without Image -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <p
+                    class="card-text"
+                    style="word-wrap: break-word; white-space: normal"
+                  >
+                    <b>Note:</b> The following steps
+                    <b style="color: yellow">(18.1 to 18.5)</b> are intended
+                    <b>only for Windows users</b> to configure network file
+                    sharing.<br />
+                    <br />
+                    🖥️ <b>Windows Users:</b> Proceed to <b>Step 18.1</b> to set
+                    up SMB (Samba) / CIFS file sharing.<br />
+                    🍏🐧 <b>macOS / Linux Users:</b> You can
+                    <b style="color: aquamarine">skip steps 18.1 to 18.5</b> —
+                    your system natively supports SMB access with no extra
+                    setup.<br />
+                    <br />
+                    💡 We'll all meet back at <b>Step 19.1</b>!
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Instruction 18</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Instruction Carousel 7 -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel7"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 18.1 -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 18.1"
+                        class="card-img-top rounded-3"
+                        src="Step_18.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 18.1: Go to the <b>“Services”</b> tab in the
+                        OpenMediaVault sidebar.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----In the left-hand navigation menu of OMV, scroll
+                        down to find the <b>“Services”</b> section.<br />
+                        -----This is where all server features like SMB, FTP,
+                        NFS, etc. are managed.<br />
+                        <br />
+                        💡 We’ll be enabling SMB next to allow file sharing with
+                        Windows devices! 📁🖥️
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 18.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 18.2 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 18.2"
+                        class="card-img-top rounded-3"
+                        src="Step_18.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 18.2: Enable the SMB (CIFS) service to allow
+                        Windows file sharing.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Under the <b>Services</b> tab, click on
+                        <b>CIFS / SMB</b> — it has a <b>Windows 10 icon</b> next
+                        to it.<br />
+                        -----Then, go to the <b>“Settings”</b> sub-tab within
+                        CIFS/SMB.<br />
+                        -----At the top of the Settings page,
+                        <b>tick the “Enable” checkbox</b> to turn on the
+                        service.<br />
+                        -----Leave all other settings <b>unchanged</b> — the
+                        defaults are fine.<br />
+                        <br />
+                        💡 Enabling this allows your shared folders to be
+                        accessed from Windows via the network! 🔄🖥️
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 18.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 18.3 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 18.3"
+                        class="card-img-top rounded-3"
+                        src="Step_18.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 18.3: Navigate to the <b>Shares</b> section under
+                        the SMB/CIFS menu.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Go back to the <b>Services</b> tab in the
+                        sidebar.<br />
+                        -----Click on <b>SMB/CIFS</b> again to expand its
+                        dropdown options.<br />
+                        -----Now select the <b>“Shares”</b> submenu.<br />
+                        <br />
+                        💡 We've enabled the SMB service, but now we need to add
+                        your shared folder (NAS) to it for access over your
+                        local network! 🌐📂
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 18.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 18.4 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 18.4"
+                        class="card-img-top rounded-3"
+                        src="Step_18.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 18.4: Configure the SMB Share using your NAS
+                        folder.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Go to the <b>“Shares”</b> tab under
+                        <b>SMB/CIFS</b>.<br />
+                        -----Click the <b>“+ Add”</b> button (if not already
+                        opened).<br />
+                        -----Ensure the <b>“Enable”</b> checkbox is
+                        <b>ticked</b> ✅.<br />
+                        -----In the <b>“Shared Folder”</b> dropdown menu, select
+                        the folder we created earlier — e.g.,
+                        <code>NAS</code> (see Step 17.9).<br />
+                        -----Scroll down and click on <b>Save</b> to apply the
+                        settings.<br />
+                        <br />
+                        💡 This step links your NAS folder to the SMB network
+                        service, making it discoverable by Windows systems! 📁🌐
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 18.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 18.5 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 18.5"
+                        class="card-img-top rounded-3"
+                        src="Step_18.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 18.5: Confirm your SMB share appears correctly —
+                        setup complete for Windows users!<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----You should now see a shared folder listed under
+                        <b>SMB/CIFS → Shares</b>.<br />
+                        -----It will show details like the name (e.g.,
+                        <code>NAS</code>), the shared path, and enabled
+                        status.<br />
+                        -----If everything looks good — your Windows
+                        file-sharing setup is complete! 🎉<br />
+                        <br />
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 18.5</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel7"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel7"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Code Copy Card without Image -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <p
+                    class="card-text"
+                    style="word-wrap: break-word; white-space: normal"
+                  >
+                    <b>Note:</b> The upcoming steps
+                    <b style="color: yellow">(19.1 to 19.5)</b> are specifically
+                    for <b>macOS and Linux users</b> to access the NAS.<br />
+                    <br />
+                    🍏🐧 <b>macOS / Linux Users:</b> Please proceed to Step 19.1
+                    to configure SMB access.<br />
+                    🖥️ <b>Windows Users:</b> You can
+                    <b style="color: aquamarine">skip these steps</b> — you're
+                    already set up from Step 18.1 to 18.5!<br />
+                    <br />
+                    💡 Everyone will continue together from Step 20!
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Instruction 19</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Instruction Carousel 8 -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel8"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 19.1 -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 19.1"
+                        class="card-img-top rounded-3"
+                        src="Step_19.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 19.1: Click on the <b>“Services”</b> tab and then
+                        select <b>“NFS”</b>.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----In the left-hand sidebar, go to
+                        <b>Services</b>.<br />
+                        -----Click on the <b>NFS</b> tab — used for
+                        Unix/macOS-based file sharing.<br />
+                        <br />
+                        ⚠️ <b>Note:</b> If you see a <b>yellow border</b> or
+                        warning related to Windows services — don’t worry!<br />
+                        -----That’s just a leftover from the SMB/Windows setup.
+                        It has <b>no effect</b> on your NFS config. 🎯
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 19.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 19.2 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 19.2"
+                        class="card-img-top rounded-3"
+                        src="Step_19.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 19.2: Enable the NFS service.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----While inside the <b>NFS</b> section, click on
+                        <b>“Settings”</b>.<br />
+                        -----Tick the checkbox that says <b>“Enable”</b>.<br />
+                        -----Then click <b>Save</b> to apply the settings.<br />
+                        <br />
+                        💡 This step activates NFS on your Raspberry Pi so
+                        Linux/macOS machines can connect via the network.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 19.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 19.3 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 19.3"
+                        class="card-img-top rounded-3"
+                        src="Step_19.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 19.3: Click on <b>“Shares”</b> under the NFS
+                        tab.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Go back to the <b>NFS</b> section.<br />
+                        -----Click on <b>“Shares”</b> — this is where NFS shares
+                        are listed.<br />
+                        -----It will likely be <b>empty</b> right now — that's
+                        expected.<br />
+                        <br />
+                        💡 Don’t worry — we will now add the shared folder we
+                        created earlier (NAS from Step 17.9).
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 19.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 19.4 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 19.4"
+                        class="card-img-top rounded-3"
+                        src="Step_19.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 19.4: Add your shared NAS folder to NFS.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click the <b>“+”</b> button to add a new NFS
+                        share.<br />
+                        -----In the Shared Folder dropdown, select
+                        <b>NAS</b> (created earlier).<br />
+                        -----Leave <b>all other options</b> at their default
+                        settings — don’t change anything.<br />
+                        -----Click <b>Save</b> to confirm.<br />
+                        <br />
+                        💡 This allows macOS and Linux devices to mount the NAS
+                        folder over the network!
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 19.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 19.5 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 19.5"
+                        class="card-img-top rounded-3"
+                        src="Step_19.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 19.5: You should now see your NAS NFS share
+                        listed.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----The new NAS share should be visible with its export
+                        path, permissions, and default settings.<br />
+                        -----This confirms your NFS share is active and ready
+                        for access from Linux/macOS devices! ✅<br />
+                        <br />
+                        💡 You can now mount this NFS share using your system’s
+                        native file sharing tools.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 19.5</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel8"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel8"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Code Copy Card without Image -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <p
+                    class="card-text"
+                    style="word-wrap: break-word; white-space: normal"
+                  >
+                    ⚠️ <b>Important Note:</b><br />
+                    <br />
+                    Whether you're on
+                    <b style="color: lightgreen">Windows</b> or
+                    <b style="color: lightblue">macOS/Linux</b>, we’ve made
+                    several changes to the OpenMediaVault (OMV)
+                    configuration.<br />
+                    <br />
+                    📢 Please make sure to
+                    <b>click the yellow “Apply” button</b> at the top of the OMV
+                    dashboard before proceeding any further.<br />
+                    <br />
+                    💡 This will confirm and apply all your pending changes such
+                    as enabling SMB/NFS services and creating shared folders.<br />
+                    <br />
+                    ✅ Once done, you're ready to move ahead with the next
+                    steps!
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Instruction 20</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Instruction Carousel 9 -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel9"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 21.1 -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 21.1"
+                        class="card-img-top rounded-3"
+                        src="Step_21.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 21.1: Navigate to the <b>Users tab</b> and edit the
+                        default user.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click on the <b>“Users”</b> tab in the left sidebar
+                        of the OMV interface.<br />
+                        -----Inside it, click again on the
+                        <b>“Users”</b> menu.<br />
+                        -----You will see a single user listed — usually
+                        <b>pi</b> if you're following this setup.<br />
+                        <br />
+                        🔧 <b>Action:</b><br />
+                        -----Select the user <b>pi</b> by clicking on their
+                        row.<br />
+                        -----Click on the <b>pencil icon</b> (✏️) to open the
+                        user configuration editor.<br />
+                        <br />
+                        💡 By default, this user does not have a password set —
+                        we will fix that in the next step.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 21.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 21.2 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 21.2"
+                        class="card-img-top rounded-3"
+                        src="Step_21.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 21.2: Set a password for the <b>pi</b> user.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After clicking the <b>pencil icon</b> in the
+                        previous step, you will be taken to the edit screen.<br />
+                        -----Find the <b>Password</b> and
+                        <b>Confirm Password</b> fields.<br />
+                        -----Enter a <b>strong, memorable password</b> for the
+                        <b>pi</b> user.<br />
+                        <br />
+                        -----Click "Save"<br />
+                        💡 <b>Important Note:</b><br />
+                        🔒 This password will act as a security credential when
+                        you access your shared folders from your local PC.<br />
+                        📝 It's recommended to
+                        <b>note this password down</b> somewhere safe for future
+                        access.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 21.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 21.3 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 21.3"
+                        class="card-img-top rounded-3"
+                        src="Step_21.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 21.3: Apply the changes you've just made.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After setting the password for the user <b>pi</b>,
+                        you’ll notice a <b>yellow bar</b> appear at the top of
+                        the OMV dashboard.<br />
+                        -----This bar prompts you to apply the pending
+                        changes.<br />
+                        <br />
+                        🟡 <b>Action:</b><br />
+                        -----Click on the <b>"Apply"</b> button in the yellow
+                        bar.<br />
+                        -----Confirm when prompted.<br />
+                        <br />
+                        💡 Skipping this will prevent the password and user
+                        settings from being saved properly — make sure you apply
+                        the changes before continuing!
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 21.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel9"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel9"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Code Card  -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="alert alert-info text-center" role="alert">
+                    <p style="color: lightgreen">PHASE_2_COMPLETE<br /></p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body text-center">
+                  <a
+                    href="../P3_Config_Local_Sys_&_RPI/Config_RPI_&_Local_Sys.html"
+                    class="btn btn-success btn-lg fw-bold"
+                    style="min-width: 280px"
+                  >
+                    Go to phase 3 – Config_Local_System_and_RPI
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container-fluid footer-custom mt-5">
+      <div class="container py-5">
+        <div class="row gy-4">
+          <!-- Project Info -->
+          <div class="col-12 col-md-4">
+            <h5 class="text-white mb-3">Pi-Vate Cloud</h5>
+            <p class="text-light small">
+              Pi-Vate Cloud is a practical documentation project for building a
+              personal Raspberry Pi server, configuring essential services, and
+              securely accessing your home lab from anywhere.
+            </p>
+          </div>
+
+          <!-- Navigation -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Navigation</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+                >
+                  Home
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="BAKE_YOUR_RPI.html">
+                  Bake Your Raspberry Pi
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="Config_RPI_&_OVM.html">
+                  Configure Raspberry Pi & OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="Config_RPI_&_Local_Sys.html"
+                >
+                  Local System Integration
+                </a>
+              </li>
+
+              <!-- ✅ Phase 4 added -->
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="SERVICES_SETUP.html">
+                  Service Installation & Configuration
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="ACCESS_TWINGATE.html">
+                  Secure Remote Access
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Resources</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.raspberrypi.com/documentation/"
+                  target="_blank"
+                >
+                  Raspberry Pi Documentation
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.openmediavault.org/"
+                  target="_blank"
+                >
+                  OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.twingate.com/"
+                  target="_blank"
+                >
+                  Twingate
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+                  target="_blank"
+                >
+                  GitHub Repository
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 pt-4 border-top border-secondary"
+        >
+          <p class="text-light small mb-2 mb-md-0">
+            © 2025 Pi-Vate Cloud · Built for learning, experimentation, and
+            homelabs.
+          </p>
+
+          <div class="d-flex gap-3">
+            <a
+              href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+              target="_blank"
+              class="text-light small text-decoration-none"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+              class="text-light small text-decoration-none"
+            >
+              Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      .footer-custom {
+        background-color: #333333;
+        color: white;
+      }
+      footer {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .form-control {
+        max-width: 300px;
+      }
+      .bi {
+        transition: transform 0.2s ease-in-out;
+      }
+      .bi:hover {
+        transform: scale(1.1);
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".copy-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const code = this.getAttribute("data-code");
+            navigator.clipboard
+              .writeText(code)
+              .then(() => {
+                this.textContent = "Copied!";
+                this.classList.add("btn-success"); // Optional: Change color
+                this.classList.remove("btn-outline-secondary");
+
+                // Reset button text after 2 seconds
+                setTimeout(() => {
+                  this.textContent = "Copy";
+                  this.classList.remove("btn-success");
+                  this.classList.add("btn-outline-secondary");
+                }, 2000);
+              })
+              .catch((err) => console.error("Error copying text", err));
+          });
+        });
+      });
+    </script>
+    <!-- JavaScript for copy functionality -->
+    <script>
+      function copyCode() {
+        const codeElement = document.getElementById("automation-code");
+        if (!codeElement) {
+          alert("Could not find code element");
+          return;
+        }
+
+        // Create a temporary textarea element to copy from
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = codeElement.textContent;
+        document.body.appendChild(tempTextArea);
+
+        // Select the text and copy
+        tempTextArea.select();
+        tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+        try {
+          const successful = document.execCommand("copy");
+          const copyBtn = document.getElementById("copyButton");
+          copyBtn.textContent = successful ? "Copied!" : "Failed to copy";
+
+          setTimeout(function () {
+            copyBtn.textContent = "Copy Code";
+          }, 2000);
+        } catch (err) {
+          console.error("Unable to copy", err);
+        }
+
+        // Remove the temporary element
+        document.body.removeChild(tempTextArea);
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

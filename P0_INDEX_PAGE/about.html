@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Project - Pi-Vate Cloud</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding-top: 70px;
+      }
+
+      /* Navbar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 0 40px;
+      }
+
+      .navbar-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .navbar-logo {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+      }
+
+      .navbar-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2d3748;
+      }
+
+      .navbar-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .navbar-links a {
+        text-decoration: none;
+        color: #4a5568;
+        font-weight: 500;
+        font-size: 15px;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .navbar-links a:hover {
+        color: #667eea;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #2d3748;
+        cursor: pointer;
+      }
+
+      /* Main Content */
+      .main-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+      }
+
+      .content-card {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .project-title {
+        font-size: 42px;
+        color: #2d3748;
+        margin-bottom: 15px;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .project-subtitle {
+        font-size: 18px;
+        color: #718096;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .section {
+        margin-bottom: 45px;
+      }
+
+      .section-title {
+        font-size: 28px;
+        color: #2d3748;
+        margin-bottom: 20px;
+        font-weight: 700;
+        padding-bottom: 10px;
+        border-bottom: 3px solid #667eea;
+      }
+
+      .section-content {
+        font-size: 16px;
+        color: #4a5568;
+        line-height: 1.8;
+      }
+
+      .section-content p {
+        margin-bottom: 15px;
+      }
+
+      .section-content ul,
+      .section-content ol {
+        margin-left: 25px;
+        margin-bottom: 15px;
+      }
+
+      .section-content li {
+        margin-bottom: 10px;
+      }
+
+      .highlight-box {
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.1),
+          rgba(118, 75, 162, 0.1)
+        );
+        border-left: 4px solid #667eea;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .feature-item {
+        background: #f7fafc;
+        padding: 20px;
+        border-radius: 12px;
+        border: 2px solid #e2e8f0;
+        transition: all 0.3s ease;
+      }
+
+      .feature-item:hover {
+        border-color: #667eea;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 30px;
+        color: #667eea;
+        margin-bottom: 12px;
+      }
+
+      .feature-title {
+        font-size: 18px;
+        color: #2d3748;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .feature-desc {
+        font-size: 14px;
+        color: #718096;
+        line-height: 1.6;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 25px 0;
+      }
+
+      .stat-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 25px;
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .stat-value {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      .tech-tag {
+        display: inline-block;
+        background: #e2e8f0;
+        color: #4a5568;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        margin: 5px;
+        font-weight: 500;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      th {
+        background: #f7fafc;
+        color: #2d3748;
+        font-weight: 600;
+      }
+
+      tr:hover {
+        background: #f7fafc;
+      }
+
+      @media (max-width: 968px) {
+        .navbar {
+          padding: 0 20px;
+        }
+
+        .navbar-links {
+          display: none;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          right: 0;
+          background: white;
+          flex-direction: column;
+          padding: 20px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          gap: 15px;
+        }
+
+        .navbar-links.active {
+          display: flex;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .content-card {
+          padding: 30px 20px;
+        }
+
+        .project-title {
+          font-size: 32px;
+        }
+
+        .feature-grid,
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-brand">
+          <div class="navbar-logo">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <span class="navbar-title">Pi-Vate Cloud</span>
+        </a>
+
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="navbar-links" id="navbarLinks">
+          <li>
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li>
+            <a href="team.html"><i class="fas fa-users"></i> Team Members</a>
+          </li>
+          <li>
+            <a href="about.html"
+              ><i class="fas fa-info-circle"></i> About Project</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="content-card">
+        <h1 class="project-title">Pi-Vate Cloud</h1>
+        <p class="project-subtitle">
+          A Self-Sovereign, Cost-Effective Personal Data Ecosystem on Raspberry
+          Pi
+        </p>
+
+        <!-- Abstract -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-file-alt"></i> Abstract
+          </h2>
+          <div class="section-content">
+            <p>
+              The predominance of corporate cloud storage platforms has made
+              day-to-day personal data management convenient but introduces
+              recurring costs, privacy exposures, and vendor lock-in. This work
+              presents the Pi-Vate Cloud: a low-cost, self-sovereign personal
+              cloud built on Raspberry Pi single-board computers and open-source
+              software to serve a household-scale workload.
+            </p>
+            <p>
+              The prototype uses a Raspberry Pi 4 Model B (1 GB) with a Samsung
+              32 GB microSD boot device and a Seagate Barracuda 1 TB HDD,
+              managed with OpenMediaVault and Docker containers, providing Samba
+              file shares and Plex media serving. Remote zero-trust access is
+              provided via Twingate (free up to 5 users).
+            </p>
+          </div>
+        </section>
+
+        <!-- Project Overview -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-lightbulb"></i> Project Overview
+          </h2>
+          <div class="section-content">
+            <p>
+              The Pi-Vate Cloud project addresses the growing concerns about
+              data privacy, recurring subscription costs, and vendor lock-in
+              associated with commercial cloud storage platforms. By leveraging
+              affordable Raspberry Pi hardware and open-source software, this
+              project empowers individuals and families to build their own
+              private cloud infrastructure.
+            </p>
+            <div class="highlight-box">
+              <strong>Key Value Proposition:</strong> For under the cost of
+              several years of cloud subscriptions, consumers can regain
+              ownership and control of their digital archives while retaining
+              remote access and media streaming capabilities.
+            </div>
+          </div>
+        </section>
+
+        <!-- Objectives -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-bullseye"></i> Project Objectives
+          </h2>
+          <div class="section-content">
+            <ol>
+              <li>
+                <strong>Cost-Effectiveness:</strong> Achieve ≥70% cost reduction
+                compared to commercial cloud plans over a 3-year period
+              </li>
+              <li>
+                <strong>Performance:</strong> Ensure local transfer rates
+                sufficient for typical household use (≥80 MB/s on Gigabit LAN)
+              </li>
+              <li>
+                <strong>Security:</strong> Implement multi-layered defense
+                strategies including TLS/SSL encryption, 2FA, and intrusion
+                detection systems
+              </li>
+              <li>
+                <strong>Usability:</strong> Provide documentation enabling
+                non-technical users to deploy the system in ~1.5 hours
+              </li>
+              <li>
+                <strong>Data Sovereignty:</strong> Return complete data
+                ownership and control to users
+              </li>
+              <li>
+                <strong>Remote Access:</strong> Enable secure, zero-trust remote
+                connectivity without port forwarding
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-star"></i> Key Features
+          </h2>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+              <h3 class="feature-title">Zero-Trust Security</h3>
+              <p class="feature-desc">
+                Secure remote access via Twingate without exposing ports
+              </p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-hdd"></i></div>
+              <h3 class="feature-title">NAS Services</h3>
+              <p class="feature-desc">
+                File sharing via SMB/CIFS with OpenMediaVault management
+              </p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-film"></i></div>
+              <h3 class="feature-title">Media Streaming</h3>
+              <p class="feature-desc">
+                Plex Media Server with direct play support
+              </p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-lock"></i></div>
+              <h3 class="feature-title">Data Encryption</h3>
+              <p class="feature-desc">
+                LUKS encryption for data-at-rest protection
+              </p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-dollar-sign"></i></div>
+              <h3 class="feature-title">Cost Savings</h3>
+              <p class="feature-desc">
+                54-62% savings over 5 years vs commercial clouds
+              </p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+              <h3 class="feature-title">Docker Integration</h3>
+              <p class="feature-desc">
+                Modular containerized services for easy management
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Architecture -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-sitemap"></i> System Architecture
+          </h2>
+          <div class="section-content">
+            <h3>Hardware Components</h3>
+            <ul>
+              <li>
+                <strong>Compute:</strong> Raspberry Pi 4 Model B (1 GB RAM, 1.5
+                GHz Quad-Core ARM Cortex-A72)
+              </li>
+              <li>
+                <strong>Boot Storage:</strong> Samsung 32 GB microSD (Class 10)
+              </li>
+              <li>
+                <strong>Data Storage:</strong> Seagate Barracuda 1 TB HDD (USB
+                3.0 + UASP)
+              </li>
+              <li><strong>Network:</strong> Gigabit Ethernet LAN connection</li>
+              <li>
+                <strong>Power:</strong> Official Raspberry Pi 5V/3A USB-C
+                adapter
+              </li>
+            </ul>
+
+            <h3 style="margin-top: 25px">Software Stack</h3>
+            <div style="margin: 15px 0">
+              <span class="tech-tag">Raspberry Pi OS Lite (64-bit)</span>
+              <span class="tech-tag">OpenMediaVault</span>
+              <span class="tech-tag">Docker</span>
+              <span class="tech-tag">Plex Media Server</span>
+              <span class="tech-tag">Twingate ZTNA</span>
+              <span class="tech-tag">UFW Firewall</span>
+              <span class="tech-tag">fail2ban</span>
+              <span class="tech-tag">LUKS Encryption</span>
+            </div>
+
+            <h3 style="margin-top: 25px">Architecture Layers</h3>
+            <ol>
+              <li>
+                <strong>Hardware Layer:</strong> Raspberry Pi 4, external HDD,
+                networking equipment
+              </li>
+              <li>
+                <strong>OS Layer:</strong> Raspberry Pi OS with system hardening
+              </li>
+              <li>
+                <strong>Storage Layer:</strong> OpenMediaVault for NAS
+                management
+              </li>
+              <li>
+                <strong>Service Layer:</strong> Docker containers (Plex,
+                backups, monitoring)
+              </li>
+              <li>
+                <strong>Access Layer:</strong> Twingate zero-trust network
+                access
+              </li>
+              <li>
+                <strong>Security Layer:</strong> Firewall, SSH keys, fail2ban,
+                encryption
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Implementation -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-tools"></i> Implementation Steps
+          </h2>
+          <div class="section-content">
+            <h3>Phase 1: Base System Setup</h3>
+            <ul>
+              <li>
+                Flash Raspberry Pi OS Lite onto microSD using Raspberry Pi
+                Imager
+              </li>
+              <li>
+                Enable SSH, configure locale/timezone, apply system updates
+              </li>
+              <li>Connect external HDD via USB 3.0 port</li>
+            </ul>
+
+            <h3 style="margin-top: 20px">Phase 2: Storage Configuration</h3>
+            <ul>
+              <li>Install OpenMediaVault for NAS management</li>
+              <li>Configure SMB/CIFS file shares and user permissions</li>
+              <li>Set up shared folders for media and documents</li>
+            </ul>
+
+            <h3 style="margin-top: 20px">Phase 3: Media Services</h3>
+            <ul>
+              <li>Deploy Plex Media Server using Docker</li>
+              <li>Configure media libraries for direct play</li>
+              <li>Optimize for local and remote streaming</li>
+            </ul>
+
+            <h3 style="margin-top: 20px">Phase 4: Security Hardening</h3>
+            <ul>
+              <li>Configure SSH key-only authentication</li>
+              <li>Set up UFW firewall with minimal open ports</li>
+              <li>Install and configure fail2ban for intrusion prevention</li>
+              <li>Implement LUKS encryption for data-at-rest</li>
+            </ul>
+
+            <h3 style="margin-top: 20px">Phase 5: Remote Access</h3>
+            <ul>
+              <li>Deploy Twingate Connector on Raspberry Pi</li>
+              <li>Configure zero-trust network policies</li>
+              <li>Set up client devices for secure remote access</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Performance Results -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-chart-line"></i> Performance Results
+          </h2>
+          <div class="section-content">
+            <p>
+              Empirical testing was conducted under real-world home network
+              conditions (Airtel 100 Mbps plan with MiFi extender and Airtel
+              Xstream router).
+            </p>
+
+            <div class="stats-grid">
+              <div class="stat-box">
+                <div class="stat-value">45-60s</div>
+                <div class="stat-label">
+                  Upload time for 10 images (~120 MB)
+                </div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">25-30min</div>
+                <div class="stat-label">Upload time for 3.33 GB video</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">1080p</div>
+                <div class="stat-label">Seamless local streaming</div>
+              </div>
+            </div>
+
+            <h3 style="margin-top: 25px">Key Findings</h3>
+            <ul>
+              <li>
+                <strong>Local Performance:</strong> Achieved practical transfer
+                rates of 2-2.6 MB/s for small files and 1.85-2.22 MB/s for large
+                files
+              </li>
+              <li>
+                <strong>Media Streaming:</strong> Seamless 1080p playback on
+                local network with direct play; remote streaming limited by ISP
+                uplink
+              </li>
+              <li>
+                <strong>Bottleneck Analysis:</strong> Performance primarily
+                limited by Wi-Fi network infrastructure, not Raspberry Pi
+                hardware
+              </li>
+              <li>
+                <strong>System Stability:</strong> Reliable 24/7 operation with
+                low power consumption (~5-7W at idle)
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Cost Analysis -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-calculator"></i> Cost Analysis
+          </h2>
+          <div class="section-content">
+            <h3>Total Cost of Ownership Comparison</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Service/System</th>
+                  <th>1-Year Cost</th>
+                  <th>3-Year Cost</th>
+                  <th>5-Year Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Pi-Vate Cloud</strong></td>
+                  <td>$110</td>
+                  <td>$182</td>
+                  <td>$230</td>
+                </tr>
+                <tr>
+                  <td>Google One (1 TB)</td>
+                  <td>$100</td>
+                  <td>$300</td>
+                  <td>$500</td>
+                </tr>
+                <tr>
+                  <td>Dropbox Plus (1 TB)</td>
+                  <td>$144</td>
+                  <td>$432</td>
+                  <td>$720</td>
+                </tr>
+                <tr>
+                  <td>iCloud+ (1 TB)</td>
+                  <td>$120</td>
+                  <td>$360</td>
+                  <td>$600</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="highlight-box">
+              <strong>Savings Analysis:</strong>
+              <ul style="margin-top: 10px">
+                <li>Break-even point: ~1.1 years compared to Google One</li>
+                <li>
+                  3-year savings: 39% compared to Google One (~$118 saved)
+                </li>
+                <li>
+                  5-year savings: 54-62% compared to commercial services
+                  ($270-$490 saved)
+                </li>
+              </ul>
+            </div>
+
+            <h3 style="margin-top: 25px">Cost Breakdown</h3>
+            <ul>
+              <li>
+                <strong>Capital Expenditure (One-time):</strong> ~$110
+                <ul>
+                  <li>Raspberry Pi 4 (1 GB): $35</li>
+                  <li>Seagate Barracuda 1 TB HDD: $50</li>
+                  <li>MicroSD, enclosure, PSU: $25</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Operational Expenditure (Monthly):</strong> ~$2
+                <ul>
+                  <li>Electricity: ~1.5 kWh/month at average rates</li>
+                  <li>System draws 5-7W at idle</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Security Features -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-lock"></i> Security Implementation
+          </h2>
+          <div class="section-content">
+            <h3>Multi-Layered Security Approach</h3>
+
+            <h4 style="margin-top: 20px">1. Network Security</h4>
+            <ul>
+              <li>
+                <strong>Zero-Trust Access:</strong> Twingate ZTNA eliminates
+                need for port forwarding
+              </li>
+              <li>
+                <strong>Firewall:</strong> UFW configured to allow only
+                essential services
+              </li>
+              <li>
+                <strong>Encrypted Tunnels:</strong> All remote access uses
+                end-to-end encryption
+              </li>
+            </ul>
+
+            <h4 style="margin-top: 20px">2. Authentication & Access Control</h4>
+            <ul>
+              <li>
+                <strong>SSH Security:</strong> Key-only authentication, password
+                login disabled
+              </li>
+              <li>
+                <strong>Intrusion Prevention:</strong> fail2ban blocks repeated
+                failed login attempts
+              </li>
+              <li>
+                <strong>User Management:</strong> Granular permissions via
+                OpenMediaVault
+              </li>
+            </ul>
+
+            <h4 style="margin-top: 20px">3. Data Protection</h4>
+            <ul>
+              <li>
+                <strong>Encryption at Rest:</strong> LUKS disk encryption for
+                HDD
+              </li>
+              <li>
+                <strong>Secure Protocols:</strong> TLS/SSL for web interfaces
+              </li>
+              <li>
+                <strong>Backup Strategy:</strong> Automated encrypted backups
+                recommended
+              </li>
+            </ul>
+
+            <h4 style="margin-top: 20px">4. System Hardening</h4>
+            <ul>
+              <li>
+                <strong>Minimal Services:</strong> Only required services
+                exposed
+              </li>
+              <li>
+                <strong>Automatic Updates:</strong> Security patches applied
+                regularly
+              </li>
+              <li>
+                <strong>Monitoring:</strong> System logs and alerts configured
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Technologies Used -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-code"></i> Technologies Used
+          </h2>
+          <div class="section-content">
+            <h3>Core Technologies</h3>
+            <ul>
+              <li>
+                <strong>Raspberry Pi 4:</strong> ARM-based single-board computer
+                with USB 3.0 and Gigabit Ethernet
+              </li>
+              <li>
+                <strong>Raspberry Pi OS:</strong> Debian-based Linux
+                distribution optimized for Pi hardware
+              </li>
+              <li>
+                <strong>OpenMediaVault:</strong> Open-source NAS solution with
+                web-based management
+              </li>
+              <li>
+                <strong>Docker:</strong> Container platform for deploying
+                isolated services
+              </li>
+              <li>
+                <strong>Plex Media Server:</strong> Media organization and
+                streaming platform
+              </li>
+              <li>
+                <strong>Twingate:</strong> Zero-trust network access platform
+              </li>
+            </ul>
+
+            <h3 style="margin-top: 25px">Security Tools</h3>
+            <ul>
+              <li>
+                <strong>UFW (Uncomplicated Firewall):</strong> Linux firewall
+                management tool
+              </li>
+              <li><strong>fail2ban:</strong> Intrusion prevention software</li>
+              <li>
+                <strong>LUKS (Linux Unified Key Setup):</strong> Disk encryption
+                specification
+              </li>
+              <li><strong>OpenSSH:</strong> Secure remote access protocol</li>
+            </ul>
+
+            <h3 style="margin-top: 25px">Protocols & Standards</h3>
+            <ul>
+              <li>
+                <strong>SMB/CIFS:</strong> File sharing protocol for network
+                storage
+              </li>
+              <li><strong>HTTPS/TLS:</strong> Secure web communication</li>
+              <li>
+                <strong>SSH:</strong> Secure shell for remote administration
+              </li>
+              <li>
+                <strong>ZTNA:</strong> Zero-trust network access framework
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Limitations -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-exclamation-triangle"></i> Limitations
+          </h2>
+          <div class="section-content">
+            <ol>
+              <li>
+                <strong>Computational Constraints:</strong> Raspberry Pi 4 CPU
+                inadequate for real-time video transcoding; relies on direct
+                play or pre-transcoded media
+              </li>
+              <li>
+                <strong>Single-Point-of-Failure:</strong> Single HDD
+                architecture presents data loss risk without RAID or automated
+                backups
+              </li>
+              <li>
+                <strong>Network Dependency:</strong> Performance limited by home
+                network infrastructure and ISP uplink speed
+              </li>
+              <li>
+                <strong>Maintenance Responsibility:</strong> Users must handle
+                system updates, security patches, and hardware maintenance
+              </li>
+              <li>
+                <strong>Scalability:</strong> Optimized for household use;
+                larger deployments require more robust hardware
+              </li>
+              <li>
+                <strong>Technical Knowledge:</strong> Initial setup requires
+                moderate technical proficiency despite simplified documentation
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Future Scope -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-rocket"></i> Future Enhancements
+          </h2>
+          <div class="section-content">
+            <h3>Planned Improvements</h3>
+            <ol>
+              <li>
+                <strong>RAID Implementation:</strong> Add redundant storage with
+                RAID 1 mirroring for improved reliability
+              </li>
+              <li>
+                <strong>Automated Backup System:</strong> Implement scheduled
+                backups using BorgBackup or rsync with off-site replication
+              </li>
+              <li>
+                <strong>Enhanced Hardware:</strong> Upgrade to more powerful
+                SBCs (Raspberry Pi 5, Orange Pi 5) for transcoding support
+              </li>
+              <li>
+                <strong>Web-Based Setup Wizard:</strong> Develop graphical
+                installer for simplified deployment
+              </li>
+              <li>
+                <strong>Mobile Applications:</strong> Create dedicated
+                iOS/Android apps for easier access and management
+              </li>
+              <li>
+                <strong>AI Integration:</strong> Add intelligent file
+                categorization and duplicate detection
+              </li>
+              <li>
+                <strong>Advanced Monitoring:</strong> Implement comprehensive
+                IDS/IPS and real-time alerting
+              </li>
+              <li>
+                <strong>Formal Security Audit:</strong> Conduct third-party
+                penetration testing
+              </li>
+              <li>
+                <strong>Usability Study:</strong> Evaluate deployment experience
+                with non-technical users
+              </li>
+              <li>
+                <strong>Performance Benchmarking:</strong> Standardized testing
+                with fio, iperf3, and load simulation
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="section">
+          <h2 class="section-title">
+            <i class="fas fa-flag-checkered"></i> Conclusion
+          </h2>
+          <div class="section-content">
+            <p>
+              The Pi-Vate Cloud project successfully demonstrates the technical
+              and economic feasibility of building a self-sovereign personal
+              cloud ecosystem using affordable hardware and open-source
+              software. The system effectively addresses the key challenges of
+              commercial cloud platforms—recurring costs, privacy concerns, and
+              vendor lock-in—while providing core functionalities including file
+              storage, media streaming, and secure remote access.
+            </p>
+            <p>
+              While limitations exist, particularly regarding computational
+              power and single-point-of-failure risks, the project lays a solid
+              foundation for future enhancements. Planned improvements such as
+              RAID implementation, automated backups, and hardware upgrades will
+              further enhance reliability, usability, and performance. Overall,
+              the Pi-Vate Cloud represents a compelling alternative for
+              individuals and families seeking greater control over their
+              digital lives.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script>
+      function toggleMenu() {
+        const navbarLinks = document.getElementById("navbarLinks");
+        navbarLinks.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

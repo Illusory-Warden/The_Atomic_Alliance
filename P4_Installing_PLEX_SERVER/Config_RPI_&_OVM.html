@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+
+<html data-bs-theme="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+      name="author"
+    />
+    <meta content="Hugo 0.122.0" name="generator" />
+
+    <title>Config_RPI_&_OVM</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+      rel="stylesheet"
+    />
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="/docs/5.3/assets/img/favicons/apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link href="/docs/5.3/assets/img/favicons/manifest.json" rel="manifest" />
+    <link
+      href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
+      rel="mask-icon"
+    />
+    <link href="/docs/5.3/assets/img/favicons/favicon.ico" rel="icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta content="#712cf9" name="theme-color" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      .card {
+        height: 100%;
+      }
+      /* Make the modal image cover the full screen */
+      .zoom-img {
+        width: 100vw; /* Full screen width */
+        height: 100vh; /* Full screen height */
+        object-fit: contain; /* Keep aspect ratio */
+        cursor: pointer; /* Indicate click to close */
+      }
+    </style>
+  </head>
+
+  <body>
+    <header data-bs-theme="dark">
+      <div class="text-bg-dark collapse" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <p class="text-body-secondary"></p>
+
+              <h4>⚠️ Disclaimer ⚠️</h4>
+              <br />
+              The commands and instructions provided on this website are for
+              <b>educational and informational purposes only</b>. We are not
+              responsible for any
+              <b>data loss, system damage, or security risks</b> that may arise
+              from using these commands. Always ensure you
+              <b>understand</b> what each command does before executing it, and
+              create backups if necessary.<br />
+              <b>Use them at your own risk.</b>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="#"
+            ><strong>Disclaimer ↑</strong></a
+          >
+          <button
+            aria-controls="navbarHeader"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler collapsed"
+            data-bs-target="#navbarHeader"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h1 class="fw-bold text-primary">
+              Install & Configure Raspberry Pi Services
+            </h1>
+
+            <p class="text-body-secondary fs-5 mt-3">
+              In this phase, you’ll transform your Raspberry Pi into a
+              <b>functional home server</b>
+              by installing and configuring services such as media servers and
+              repositories.
+            </p>
+
+            <p class="text-body-secondary fs-5">
+              These services enable your Raspberry Pi to host applications,
+              manage media, and provide network-based functionality across your
+              setup.<br />
+              👇👇👇👇👇
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row">
+            <!-- Phase 4: Plex installation guide begins -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="alert alert-info text-center" role="alert">
+                    <p>PHASE_4_START</p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Carousel (Steps 23.x): Plex repository setup and installation -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel11"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 23.1: Open Command Prompt on your computer -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 23.1"
+                        class="card-img-top rounded-3"
+                        src="Step_23.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 23.1: Open the Command Prompt on your computer.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click the <strong>Start</strong> menu (Windows icon
+                        in bottom-left corner).<br />
+                        -----Type <code>cmd</code> in the search bar.<br />
+                        -----Press <strong>Enter</strong> or click on
+                        <strong>Command Prompt</strong> from the results.<br />
+                        <br />
+                        💡 You’ll use CMD to SSH into your Raspberry Pi and
+                        perform remote configurations! 💻🖱️
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 23.1</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 23.2: SSH into your Raspberry Pi using Command Prompt -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 23.2"
+                        class="card-img-top rounded-3"
+                        src="Step_23.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 23.2: SSH into your Raspberry Pi using Command
+                        Prompt.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----In the Command Prompt window, enter the following
+                        command:<br />
+                        <code
+                          >ssh &lt;username&gt;@&lt;ip_address_of_RPI&gt;</code
+                        ><br />
+                        -----Or if using a hostname:<br />
+                        <code>ssh &lt;username&gt;@&lt;localname&gt;</code
+                        ><br />
+                        -----When prompted, enter your configured password
+                        (e.g., <strong>root</strong>).<br />
+                        <br />
+                        💡 Example: <code>ssh pi@192.168.100.101</code> or
+                        <code>ssh pi@warden</code> 🧠🔐<br />
+                        🛑 If you get a trust prompt, type <code>yes</code> and
+                        press Enter.
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 23.2</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 23.3: Install apt-transport-https on the Pi -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 23.3"
+                        class="card-img-top rounded-3"
+                        src="Step_23.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 23.3: Install apt-transport-https package on your
+                        Pi.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----After SSH login, run this command to install a
+                        required transport protocol.<br />
+                        <br />
+                      </p>
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">sudo apt-get install apt-transport-https</code></pre>
+
+                      <div class="btn-group">
+                        <button
+                          class="btn btn-sm btn-outline-secondary copy-btn"
+                          data-code="sudo apt-get install apt-transport-https"
+                          type="button"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                      <small class="text-body-secondary"
+                        >Instruction 23.3</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 23.4: Add Plex public key to the system -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 23.4"
+                        class="card-img-top rounded-3"
+                        src="Step_23.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 23.4: Add Plex’s public key to the system.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----This command downloads and adds the Plex repository
+                        key.<br />
+                        <br />
+                      </p>
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -</code></pre>
+
+                      <div class="btn-group">
+                        <button
+                          class="btn btn-sm btn-outline-secondary copy-btn"
+                          data-code="curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -"
+                          type="button"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                      <small class="text-body-secondary"
+                        >Instruction 23.4</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 23.5: Add Plex repository to APT sources -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 23.5"
+                        class="card-img-top rounded-3"
+                        src="Step_23.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 23.5: Add the Plex repository to your APT
+                        sources.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Run the following command to register the Plex
+                        package source.<br />
+                        <br />
+                      </p>
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list</code></pre>
+
+                      <div class="btn-group">
+                        <button
+                          class="btn btn-sm btn-outline-secondary copy-btn"
+                          data-code="echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list"
+                          type="button"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                      <small class="text-body-secondary"
+                        >Instruction 23.5</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 23.6: Update package list (apt-get update) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 23.6"
+                        class="card-img-top rounded-3"
+                        src="Step_23.6.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 23.6: Update your package list.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Make sure your Pi knows about the new Plex
+                        packages.<br />
+                        <br />
+                      </p>
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">sudo apt-get update</code></pre>
+
+                      <div class="btn-group">
+                        <button
+                          class="btn btn-sm btn-outline-secondary copy-btn"
+                          data-code="sudo apt-get update"
+                          type="button"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                      <small class="text-body-secondary"
+                        >Instruction 23.6</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 23.7: Install Plex Media Server package -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 23.7"
+                        class="card-img-top rounded-3"
+                        src="Step_23.7.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 23.7: Install Plex Media Server.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----This installs Plex Media Server on your Raspberry
+                        Pi.<br />
+                        <br />
+                      </p>
+
+                      <pre class="bg-light p-3 rounded text-dark">
+<code class="fw-bold">sudo apt install plexmediaserver</code></pre>
+
+                      <div class="btn-group">
+                        <button
+                          class="btn btn-sm btn-outline-secondary copy-btn"
+                          data-code="sudo apt install plexmediaserver"
+                          type="button"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                      <small class="text-body-secondary"
+                        >Instruction 23.7</small
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 23.8: Verify Plex installation output -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 23.8"
+                        class="card-img-top rounded-3"
+                        src="Step_23.8.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 23.8: Verify the installation output.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Check the terminal for output confirming successful
+                        installation of Plex Media Server.<br />
+                        -----Your command prompt should resemble the sample
+                        output shown in this guide.<br />
+                        <br />
+                        💡 If it looks similar, you're good to go! ✅📦
+                      </p>
+                      <small class="text-body-secondary"
+                        >Instruction 23.8</small
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel controls for Steps 23.x -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel11"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel11"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Note card: ensure you have a valid email for Plex sign-in -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <p
+                    class="card-text"
+                    style="word-wrap: break-word; white-space: normal"
+                  >
+                    <b>Note:</b> Please make sure to
+                    <b style="color: yellow">sign in or sign up</b> using an
+                    email account that is valid, accessible, and ready to
+                    use.<br /><br />
+                    This email account will be used later for
+                    <b style="color: yellow">remote access configurations</b>
+                    and other sign-in processes.<br /><br />
+                    ✅ Using a single, reliable account helps avoid confusion
+                    and reduces the overhead of managing important notifications
+                    and permissions.
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Instruction 24</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carousel (Steps 24.x): Plex web UI setup and library configuration -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel12"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 24.1: Open Plex web interface in browser -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.1"
+                        class="card-img-top rounded-3"
+                        src="Step_24.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.1: Open Plex in your browser.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Open any web browser.<br />
+                        -----Type
+                        <code>ip_address_of_the_RPI:32400/web</code> into the
+                        address bar.<br />
+                        -----Example: <code>192.168.100.100:32400/web</code
+                        ><br />
+                        <br />
+                        💡 This IP format allows you to access the Plex server
+                        from your local network! 🌐
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.2: Sign in to your Plex account -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.2"
+                        class="card-img-top rounded-3"
+                        src="Step_24.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.2: Sign in to Plex.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Use your existing Plex account credentials.<br />
+                        -----If you don’t have one, click on create account and
+                        register with your email.<br />
+                        <br />
+                        💡 A Plex account gives you access to features like
+                        remote streaming and syncing! ✨
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.3: Acknowledge Plex intro/welcome screens -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.3"
+                        class="card-img-top rounded-3"
+                        src="Step_24.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.3: Acknowledge the Plex intro.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Read the short intro explaining how Plex works.<br />
+                        -----Click on the <strong>“Got it!”</strong> button to
+                        proceed.<br />
+                        <br />
+                        💡 This gives a quick overview of Plex's capabilities —
+                        worth a glance! 👀
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.4: Name server and allow external access -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.4"
+                        class="card-img-top rounded-3"
+                        src="Step_24.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.4: Name your server and allow external
+                        access.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Enter a server name (same as your shared folder
+                        name is recommended).<br />
+                        -----Check the box
+                        <strong
+                          >"Allow me to access my media outside my home"</strong
+                        >.<br />
+                        -----Click <strong>Next</strong> to continue.<br />
+                        <br />
+                        💡 Matching the name with your shared folder makes
+                        things easier to manage! 🗂️🧩
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.5: Add your first media library in Plex -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.5"
+                        class="card-img-top rounded-3"
+                        src="Step_24.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.5: Add your first library.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click on the
+                        <strong>Add Library</strong> button.<br />
+                        <br />
+                        💡 Libraries organize your media content. You can create
+                        multiple ones later! 📚
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.5</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.6: Choose media type (e.g., Movies) and name it -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.6"
+                        class="card-img-top rounded-3"
+                        src="Step_24.6.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.6: Choose the type of media to store.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Select <strong>Movies</strong> as the Library
+                        type.<br />
+                        -----Name it <strong>Movies</strong> (we’ll store movies
+                        & other videos).<br />
+                        -----Click <strong>Next</strong> and minimize your
+                        browser window.<br />
+                        <br />
+                        💡 You can create libraries for TV shows, music, and
+                        more — organize as you like! 🎬📁
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.6</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.7: Create media folder on the network location -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.7"
+                        class="card-img-top rounded-3"
+                        src="Step_24.7.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.7: Create a media folder in network location.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Open File Explorer and navigate to the network
+                        location.<br />
+                        -----Right-click in empty space and choose
+                        <strong>New Folder</strong>.<br />
+                        -----Name it <strong>Movies-HDD</strong>.<br />
+                        -----Close the File Explorer and return to the
+                        browser.<br />
+                        <br />
+                        💡 Keep your folder names clear and consistent for
+                        smooth library setup! 📂✅
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.7</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.8: Browse and select the media folder in Plex -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.8"
+                        class="card-img-top rounded-3"
+                        src="Step_24.8.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.8: Browse for your media folder.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----In the browser, click on
+                        <strong>Browse For Media Folder</strong>.<br />
+                        <br />
+                        💡 This lets Plex know where your media files are
+                        stored! 🗃️🔍
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.8</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.9 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.9"
+                        class="card-img-top rounded-3"
+                        src="Step_24.9.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.9: Select the folder you just created.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Navigate to the network location.<br />
+                        -----Select the folder
+                        <strong>Movies-HDD</strong>.<br />
+                        <br />
+                        💡 Make sure you’re choosing the correct folder so media
+                        shows up properly! 🎞️✔️
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.9</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.10 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.10"
+                        class="card-img-top rounded-3"
+                        src="Step_24.10.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.10: Confirm folder and add library.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Review the folder path and preview image.<br />
+                        -----Click on <strong>Add Library</strong>.<br />
+                        <br />
+                        💡 Your library is now linked to the folder — almost
+                        done! 🎉📁
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.10</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 24.11 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 24.11"
+                        class="card-img-top rounded-3"
+                        src="Step_24.11.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 24.11: Finalize the setup.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click on the <strong>Next</strong> button to
+                        complete the process.<br />
+                        <br />
+                        💡 You’re all set! Start enjoying your media with Plex.
+                        🎬🍿
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 24.11</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel12"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel12"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <p
+                    class="card-text"
+                    style="word-wrap: break-word; white-space: normal"
+                  >
+                    <b>Note:</b> You’ve successfully
+                    <b style="color: yellow">created your Plex account</b> and
+                    <b style="color: yellow"
+                      >configured it with your Raspberry Pi NAS setup</b
+                    >! 🎉<br /><br />
+                    You can now access your media
+                    <b style="color: aquamarine"
+                      >locally via Plex Media Server</b
+                    >.<br /><br />
+                    👉 For local access demonstration, refer to
+                    <b>Phase 6</b>.<br />
+                    🌐 To enable remote access, continue with <b>Phase 5</b>.
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Important Note</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="alert alert-info text-center" role="alert">
+                    <p>PHASE_4_COMPLETE</p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body text-center">
+                  <a
+                    href="../P5_ACCESS_TWINGATE/ACCESS_TWINGATE.html"
+                    class="btn btn-success btn-lg fw-bold"
+                    style="min-width: 280px"
+                  >
+                    Go to phase 5 – Access_Twingate
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container-fluid footer-custom mt-5">
+      <div class="container py-5">
+        <div class="row gy-4">
+          <!-- Project Info -->
+          <div class="col-12 col-md-4">
+            <h5 class="text-white mb-3">Pi-Vate Cloud</h5>
+            <p class="text-light small">
+              Pi-Vate Cloud is a practical documentation project for building a
+              personal Raspberry Pi server, configuring essential services, and
+              securely accessing your home lab from anywhere.
+            </p>
+          </div>
+
+          <!-- Navigation -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Navigation</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+                >
+                  Home
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="BAKE_YOUR_RPI.html">
+                  Bake Your Raspberry Pi
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="Config_RPI_&_OVM.html">
+                  Configure Raspberry Pi & OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="Config_RPI_&_Local_Sys.html"
+                >
+                  Local System Integration
+                </a>
+              </li>
+
+              <!-- ✅ Phase 4 added -->
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="SERVICES_SETUP.html">
+                  Service Installation & Configuration
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="ACCESS_TWINGATE.html">
+                  Secure Remote Access
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Resources</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.raspberrypi.com/documentation/"
+                  target="_blank"
+                >
+                  Raspberry Pi Documentation
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.openmediavault.org/"
+                  target="_blank"
+                >
+                  OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.twingate.com/"
+                  target="_blank"
+                >
+                  Twingate
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+                  target="_blank"
+                >
+                  GitHub Repository
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 pt-4 border-top border-secondary"
+        >
+          <p class="text-light small mb-2 mb-md-0">
+            © 2025 Pi-Vate Cloud · Built for learning, experimentation, and
+            homelabs.
+          </p>
+
+          <div class="d-flex gap-3">
+            <a
+              href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+              target="_blank"
+              class="text-light small text-decoration-none"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+              class="text-light small text-decoration-none"
+            >
+              Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      .footer-custom {
+        background-color: #333333;
+        color: white;
+      }
+      footer {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .form-control {
+        max-width: 300px;
+      }
+      .bi {
+        transition: transform 0.2s ease-in-out;
+      }
+      .bi:hover {
+        transform: scale(1.1);
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".copy-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const code = this.getAttribute("data-code");
+            navigator.clipboard
+              .writeText(code)
+              .then(() => {
+                this.textContent = "Copied!";
+                this.classList.add("btn-success"); // Optional: Change color
+                this.classList.remove("btn-outline-secondary");
+
+                // Reset button text after 2 seconds
+                setTimeout(() => {
+                  this.textContent = "Copy";
+                  this.classList.remove("btn-success");
+                  this.classList.add("btn-outline-secondary");
+                }, 2000);
+              })
+              .catch((err) => console.error("Error copying text", err));
+          });
+        });
+      });
+    </script>
+    <!-- JavaScript for copy functionality -->
+    <script>
+      function copyCode() {
+        const codeElement = document.getElementById("automation-code");
+        if (!codeElement) {
+          alert("Could not find code element");
+          return;
+        }
+
+        // Create a temporary textarea element to copy from
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = codeElement.textContent;
+        document.body.appendChild(tempTextArea);
+
+        // Select the text and copy
+        tempTextArea.select();
+        tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+        try {
+          const successful = document.execCommand("copy");
+          const copyBtn = document.getElementById("copyButton");
+          copyBtn.textContent = successful ? "Copied!" : "Failed to copy";
+
+          setTimeout(function () {
+            copyBtn.textContent = "Copy Code";
+          }, 2000);
+        } catch (err) {
+          console.error("Unable to copy", err);
+        }
+
+        // Remove the temporary element
+        document.body.removeChild(tempTextArea);
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

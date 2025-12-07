@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+
+<html data-bs-theme="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+      name="author"
+    />
+    <meta content="Hugo 0.122.0" name="generator" />
+
+    <title>Config_RPI_&_local_sys</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+      rel="stylesheet"
+    />
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="/docs/5.3/assets/img/favicons/apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link href="/docs/5.3/assets/img/favicons/manifest.json" rel="manifest" />
+    <link
+      href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
+      rel="mask-icon"
+    />
+    <link href="/docs/5.3/assets/img/favicons/favicon.ico" rel="icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta content="#712cf9" name="theme-color" />
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      .card {
+        height: 100%;
+      }
+      /* Make the modal image cover the full screen */
+      .zoom-img {
+        width: 100vw; /* Full screen width */
+        height: 100vh; /* Full screen height */
+        object-fit: contain; /* Keep aspect ratio */
+        cursor: pointer; /* Indicate click to close */
+      }
+    </style>
+  </head>
+
+  <body>
+    <header data-bs-theme="dark">
+      <div class="text-bg-dark collapse" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <p class="text-body-secondary"></p>
+
+              <h4>⚠️ Disclaimer ⚠️</h4>
+              <br />
+              The commands and instructions provided on this website are for
+              <b>educational and informational purposes only</b>. We are not
+              responsible for any
+              <b>data loss, system damage, or security risks</b> that may arise
+              from using these commands. Always ensure you
+              <b>understand</b> what each command does before executing it, and
+              create backups if necessary.<br />
+              <b>Use them at your own risk.</b>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="#"
+            ><strong>Disclaimer ↑</strong></a
+          >
+          <button
+            aria-controls="navbarHeader"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler collapsed"
+            data-bs-target="#navbarHeader"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h1 class="fw-bold text-primary">
+              Configure Local System & Raspberry Pi
+            </h1>
+
+            <p class="text-body-secondary fs-5 mt-3">
+              This phase bridges the gap between your
+              <b>local computer and the Raspberry Pi</b>. You’ll configure
+              tools, environments, and access methods that allow both systems to
+              communicate efficiently.
+            </p>
+
+            <p class="text-body-secondary fs-5">
+              Once completed, you’ll be able to manage, automate, and interact
+              with your Raspberry Pi seamlessly from your local machine.<br />
+              👇👇👇👇👇
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row">
+            <!-- SITE CONTENT START: Phase 3 — Config Local System & Raspberry Pi -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="alert alert-info text-center" role="alert">
+                    <p>PHASE_3_START</p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Info Card: Phase marker and important notice about NAS access -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <p
+                    class="card-text"
+                    style="word-wrap: break-word; white-space: normal"
+                  >
+                    ⚠️ <b>Important Notice:</b><br />
+                    <br />
+                    You’ve now <b>created your own NAS</b> successfully using
+                    OpenMediaVault! 🎉<br />
+                    <br />
+                    From this point onward, you will learn how to
+                    <b style="color: yellow"
+                      >connect your NAS to your PC or Laptop</b
+                    >
+                    — whether on <b>Windows, macOS, or Linux</b>.<br />
+                    <br />
+                    🛠️ These steps involve file sharing, network access, and
+                    authentication setups.<br />
+                    <b style="color: aquamarine"
+                      >Please follow all instructions carefully to ensure
+                      seamless access!</b
+                    >
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Instruction 21</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Carousel: Steps 22.1-22.9 — Map NAS to Windows File Explorer (Add network location) -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel10"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- Step 22.1: Open File Explorer and start 'Add a network location' -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 22.1"
+                        class="card-img-top rounded-3"
+                        src="Step_22.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 22.1: Open File Explorer and navigate to “This
+                        PC”.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Right-click anywhere in the blank space.<br />
+                        -----From the context menu, click
+                        <b>"Add a network location"</b>.<br />
+                        <br />
+                        💡 This will begin the process of linking your NAS to
+                        Windows File Explorer!
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 22.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 22.2: Proceed through the wizard (click Next) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 22.2"
+                        class="card-img-top rounded-3"
+                        src="Step_22.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 22.2: A wizard window appears.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click the <b>"Next"</b> button to continue
+                        setup.<br />
+                        <br />
+                        🧙 This wizard helps guide your network folder
+                        connection.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 22.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 22.3: Choose 'Custom network location' option -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 22.3"
+                        class="card-img-top rounded-3"
+                        src="Step_22.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 22.3: Select
+                        <b>“Choose a custom network location”</b>.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Highlight that option in the list.<br />
+                        -----Click <b>"Next"</b> to continue.<br />
+                        <br />
+                        🌐 You're now pointing to your Raspberry Pi network
+                        location!
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 22.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 22.4: Enter NAS network path (\\<ip>\<share>) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 22.4"
+                        class="card-img-top rounded-3"
+                        src="Step_22.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 22.4: Type the address of your NAS.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Under the “Internet or network address” input
+                        box:<br />
+                        -----Enter:
+                        <code
+                          >\\&lt;ip_address_of_RPI&gt;\&lt;Shared_Folder_Name&gt;</code
+                        ><br />
+                        -----Example: <code>\\192.168.100.101\NAS</code><br />
+                        -----Click <b>"Next"</b> to continue.<br />
+                        <br />
+                        💡 Make sure the shared folder exists from Step 17.9!
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 22.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 22.5: Provide NAS credentials in Windows Security popup -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 22.5"
+                        class="card-img-top rounded-3"
+                        src="Step_22.5.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 22.5: Windows Security popup will appear.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Enter your username and password.<br />
+                        -----These are the credentials created in
+                        <b>Steps 21.1, 21.2, and 21.3</b>.<br />
+                        -----Tick the checkbox
+                        <b>"Remember my credentials"</b>.<br />
+                        -----Click <b>"OK"</b>.<br />
+                        <br />
+                        🔐 This step secures access between your PC and NAS.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 22.5</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 22.6: Verify credential format using the guide image -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 22.6"
+                        class="card-img-top rounded-3"
+                        src="Step_22.6.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 22.6: Refer to the image shown on the guide page
+                        for correct credential format.<br />
+                        <br />
+                        🖼️ Visual confirmation helps avoid login errors.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 22.6</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 22.7: Choose a display name for the mapped NAS location -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 22.7"
+                        class="card-img-top rounded-3"
+                        src="Step_22.7.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 22.7: Name your NAS share for File Explorer.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----The setup will ask “What do you want to name this
+                        location?”<br />
+                        -----This name is only visible to you.<br />
+                        <br />
+                        💡 Choose something meaningful and identifiable!
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 22.7</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 22.8: Confirm the label and complete the wizard -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 22.8"
+                        class="card-img-top rounded-3"
+                        src="Step_22.8.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 22.8: Enter your preferred NAS label.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Example: <b>"RUSHI_HOME_NAS"</b><br />
+                        -----Click <b>"Next"</b> to continue.<br />
+                        <br />
+                        ✅ This name will appear under “This PC” in File
+                        Explorer.
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 22.8</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 22.9: Finish — NAS folder is now available in File Explorer -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 22.9"
+                        class="card-img-top rounded-3"
+                        src="Step_22.9.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 22.9: Network setup complete!<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Your NAS folder is now available directly in File
+                        Explorer.<br />
+                        -----It behaves just like a local folder.<br />
+                        <br />
+                        📁 Use it for storing, editing, or sharing files across
+                        your network with ease!
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 22.9</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls: previous/next navigation for File Explorer steps -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel10"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel10"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Note Card: reminders about credentials and phase completion -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <p
+                    class="card-text"
+                    style="word-wrap: break-word; white-space: normal"
+                  >
+                    <b>⚠️ Forgot your NAS login credentials?</b><br />
+                    <br />
+                    👉 Head back to
+                    <b style="color: yellow">Phase 2 - Steps 21.1 to 21.3</b>
+                    where you created the username and password for NAS
+                    access.<br />
+                    🔐 These credentials are essential for accessing your shared
+                    folder over the network.<br />
+                    <br />
+                    <b style="color: aquamarine"
+                      >Make sure to note them down somewhere safe!</b
+                    >
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Instruction 23</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="alert alert-info text-center" role="alert">
+                    <p>PHASE_3_COMPLETE</p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body text-center">
+                  <a
+                    href="../P4_Installing_PLEX_SERVER/Config_RPI_&_OVM.html"
+                    class="btn btn-success btn-lg fw-bold"
+                    style="min-width: 280px"
+                  >
+                    Go to phase 4 – Installing_Plex_Media_Server
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container-fluid footer-custom mt-5">
+      <div class="container py-5">
+        <div class="row gy-4">
+          <!-- Project Info -->
+          <div class="col-12 col-md-4">
+            <h5 class="text-white mb-3">Pi-Vate Cloud</h5>
+            <p class="text-light small">
+              Pi-Vate Cloud is a practical documentation project for building a
+              personal Raspberry Pi server, configuring essential services, and
+              securely accessing your home lab from anywhere.
+            </p>
+          </div>
+
+          <!-- Navigation -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Navigation</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+                >
+                  Home
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="BAKE_YOUR_RPI.html">
+                  Bake Your Raspberry Pi
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="Config_RPI_&_OVM.html">
+                  Configure Raspberry Pi & OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="Config_RPI_&_Local_Sys.html"
+                >
+                  Local System Integration
+                </a>
+              </li>
+
+              <!-- ✅ Phase 4 added -->
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="SERVICES_SETUP.html">
+                  Service Installation & Configuration
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="ACCESS_TWINGATE.html">
+                  Secure Remote Access
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Resources</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.raspberrypi.com/documentation/"
+                  target="_blank"
+                >
+                  Raspberry Pi Documentation
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.openmediavault.org/"
+                  target="_blank"
+                >
+                  OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.twingate.com/"
+                  target="_blank"
+                >
+                  Twingate
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+                  target="_blank"
+                >
+                  GitHub Repository
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 pt-4 border-top border-secondary"
+        >
+          <p class="text-light small mb-2 mb-md-0">
+            © 2025 Pi-Vate Cloud · Built for learning, experimentation, and
+            homelabs.
+          </p>
+
+          <div class="d-flex gap-3">
+            <a
+              href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+              target="_blank"
+              class="text-light small text-decoration-none"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+              class="text-light small text-decoration-none"
+            >
+              Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      .footer-custom {
+        background-color: #333333;
+        color: white;
+      }
+      footer {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .form-control {
+        max-width: 300px;
+      }
+      .bi {
+        transition: transform 0.2s ease-in-out;
+      }
+      .bi:hover {
+        transform: scale(1.1);
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".copy-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const code = this.getAttribute("data-code");
+            navigator.clipboard
+              .writeText(code)
+              .then(() => {
+                this.textContent = "Copied!";
+                this.classList.add("btn-success"); // Optional: Change color
+                this.classList.remove("btn-outline-secondary");
+
+                // Reset button text after 2 seconds
+                setTimeout(() => {
+                  this.textContent = "Copy";
+                  this.classList.remove("btn-success");
+                  this.classList.add("btn-outline-secondary");
+                }, 2000);
+              })
+              .catch((err) => console.error("Error copying text", err));
+          });
+        });
+      });
+    </script>
+    <!-- JavaScript for copy functionality -->
+    <script>
+      function copyCode() {
+        const codeElement = document.getElementById("automation-code");
+        if (!codeElement) {
+          alert("Could not find code element");
+          return;
+        }
+
+        // Create a temporary textarea element to copy from
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = codeElement.textContent;
+        document.body.appendChild(tempTextArea);
+
+        // Select the text and copy
+        tempTextArea.select();
+        tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+        try {
+          const successful = document.execCommand("copy");
+          const copyBtn = document.getElementById("copyButton");
+          copyBtn.textContent = successful ? "Copied!" : "Failed to copy";
+
+          setTimeout(function () {
+            copyBtn.textContent = "Copy Code";
+          }, 2000);
+        } catch (err) {
+          console.error("Unable to copy", err);
+        }
+
+        // Remove the temporary element
+        document.body.removeChild(tempTextArea);
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

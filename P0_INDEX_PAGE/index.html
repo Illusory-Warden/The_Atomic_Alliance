@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pi-Vate Cloud - Documentation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding-top: 70px;
+      }
+
+      /* Navbar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding: 0 40px;
+      }
+
+      .navbar-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .navbar-logo {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+      }
+
+      .navbar-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #2d3748;
+      }
+
+      .navbar-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .navbar-links a {
+        text-decoration: none;
+        color: #4a5568;
+        font-weight: 500;
+        font-size: 15px;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .navbar-links a:hover {
+        color: #667eea;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #2d3748;
+        cursor: pointer;
+      }
+
+      /* Main Container */
+      .main-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        min-height: calc(100vh - 70px);
+      }
+
+      .container {
+        max-width: 1100px;
+        width: 100%;
+        height: 85vh;
+        max-height: 700px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+      }
+
+      .left-panel {
+        padding: 50px 40px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .logo-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+      }
+
+      h1 {
+        font-size: 48px;
+        color: #2d3748;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        color: #4a5568;
+        margin-bottom: 40px;
+      }
+
+      .cta-button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 18px 50px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+      }
+
+      .right-panel {
+        padding: 40px;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .phases-header {
+        margin-bottom: 25px;
+        flex-shrink: 0;
+      }
+
+      .phases-header h2 {
+        font-size: 28px;
+        color: #2d3748;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .phases-header p {
+        font-size: 15px;
+        color: #718096;
+      }
+
+      .phases-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        overflow-y: auto;
+        padding-right: 10px;
+      }
+
+      .phases-list::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .phases-list::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .phases-list::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 10px;
+      }
+
+      .phases-list::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      }
+
+      .phase-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        background: #f7fafc;
+        border-radius: 10px;
+        border: 2px solid #e2e8f0;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+
+      .phase-item:hover {
+        border-color: #667eea;
+        background: white;
+        transform: translateX(5px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+      }
+
+      .phase-number {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+
+      .phase-name {
+        font-size: 16px;
+        color: #2d3748;
+        font-weight: 600;
+      }
+
+      @media (max-width: 968px) {
+        .navbar {
+          padding: 0 20px;
+        }
+
+        .navbar-links {
+          display: none;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          right: 0;
+          background: white;
+          flex-direction: column;
+          padding: 20px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          gap: 15px;
+        }
+
+        .navbar-links.active {
+          display: flex;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .container {
+          grid-template-columns: 1fr;
+          height: auto;
+          max-height: none;
+        }
+
+        .left-panel {
+          padding: 40px 30px;
+        }
+
+        .right-panel {
+          padding: 30px 20px;
+        }
+
+        h1 {
+          font-size: 36px;
+        }
+
+        .phases-list {
+          max-height: 400px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-brand">
+          <div class="navbar-logo">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <span class="navbar-title">Pi-Vate Cloud</span>
+        </a>
+
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="navbar-links" id="navbarLinks">
+          <li>
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li>
+            <a href="team.html"><i class="fas fa-users"></i> Team Members</a>
+          </li>
+          <li>
+            <a href="about.html"
+              ><i class="fas fa-info-circle"></i> About Project</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+      <div class="container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+          <div class="logo-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+
+          <h1>Pi-Vate Cloud</h1>
+          <p class="subtitle">Welcome to the Documentation</p>
+
+          <a href="../P1_Bake_Your_RPI/BAKE_YOUR_RPI.html" class="cta-button">
+            <i class="fas fa-rocket"></i>
+            Let's Get Started
+          </a>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+          <div class="phases-header">
+            <h2>Setup Phases</h2>
+            <p>Follow these steps to build your private cloud</p>
+          </div>
+
+          <div class="phases-list">
+            <a href="../P1_Bake_Your_RPI/BAKE_YOUR_RPI.html" class="phase-item">
+              <div class="phase-number">1</div>
+              <span class="phase-name">Bake Your RPI</span>
+            </a>
+
+            <a href="../P2_Installing_OMV/install_omv.html" class="phase-item">
+              <div class="phase-number">2</div>
+              <span class="phase-name">Installing OMV</span>
+            </a>
+
+            <a
+              href="../P3_Config_Local_Sys_&_RPI/config.html"
+              class="phase-item"
+            >
+              <div class="phase-number">3</div>
+              <span class="phase-name">Config Local Sys & RPI</span>
+            </a>
+
+            <a href="../P4_Installing_PLEX-SERVER/plex.html" class="phase-item">
+              <div class="phase-number">4</div>
+              <span class="phase-name">Installing PLEX SERVER</span>
+            </a>
+
+            <a href="../P5_ACCESS_TWINGATE/twingate.html" class="phase-item">
+              <div class="phase-number">5</div>
+              <span class="phase-name">Access Twingate</span>
+            </a>
+
+            <a
+              href="../P6_Installing_Gigolo_And_Twingate_Client_on_Linux/gigolo.html"
+              class="phase-item"
+            >
+              <div class="phase-number">6</div>
+              <span class="phase-name"
+                >Installing Gigolo And Twingate Client on Linux</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const navbarLinks = document.getElementById("navbarLinks");
+        navbarLinks.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+
+<html data-bs-theme="dark" lang="en">
+  <!-- Page: Bake Your RPI — step-by-step Raspberry Pi setup guide -->
+  <head>
+    <!-- Head: meta tags, favicons, external css and inline styles -->
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+      name="author"
+    />
+    <meta content="Hugo 0.122.0" name="generator" />
+
+    <title>Bake_your_RPI</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+      rel="stylesheet"
+    />
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="/docs/5.3/assets/img/favicons/apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      href="/docs/5.3/assets/img/favicons/favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link href="/docs/5.3/assets/img/favicons/manifest.json" rel="manifest" />
+    <link
+      href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
+      rel="mask-icon"
+    />
+    <link href="/docs/5.3/assets/img/favicons/favicon.ico" rel="icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta content="#712cf9" name="theme-color" />
+    <style>
+      /* Inline styles: small set of layout and helper classes used by this page */
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      .card {
+        height: 100%;
+      }
+      .zoom-img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: contain;
+        cursor: pointer;
+      }
+    </style>
+    <!-- End head -->
+  </head>
+
+  <body>
+    <!-- Body start -->
+    <!-- Header / Navigation: collapsible disclaimer and brand bar -->
+    <header data-bs-theme="dark">
+      <div class="text-bg-dark collapse" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <p class="text-body-secondary"></p>
+
+              <h4>⚠️ Disclaimer ⚠️</h4>
+              <br />
+              The commands and instructions provided on this website are for
+              <b>educational and informational purposes only</b>. We are not
+              responsible for any
+              <b>data loss, system damage, or security risks</b> that may arise
+              from using these commands. Always ensure you
+              <b>understand</b> what each command does before executing it, and
+              create backups if necessary.<br />
+              <b>Use them at your own risk.</b>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a class="navbar-brand d-flex align-items-center" href="#"
+            ><strong>Disclaimer ↑</strong></a
+          >
+          <button
+            aria-controls="navbarHeader"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler collapsed"
+            data-bs-target="#navbarHeader"
+            data-bs-toggle="collapse"
+            type="button"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main content: phase intro and instruction carousels -->
+    <main>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <h1 class="fw-bold text-primary">Bake Your Raspberry Pi</h1>
+
+            <p class="text-body-secondary fs-5 mt-3">
+              This phase provides a <b>hands-on walkthrough</b> to bring your
+              Raspberry Pi to life for the first time. You’ll prepare the SD
+              card, <b>flash the operating system</b>, connect essential
+              hardware, and perform the <b>initial boot</b>.
+            </p>
+
+            <p class="text-body-secondary fs-5">
+              By the end of this phase, your Raspberry Pi will be powered on,
+              running a fresh OS, and ready for network configuration.<br />
+              👇👇👇👇👇
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Album container: holds all instruction cards and carousels -->
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row">
+            <!-- SITE CONTENT START: Phase 1 — "Bake Your RPI" -->
+            <!-- Info Card: Phase marker and short phase description -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="alert alert-info text-center" role="alert">
+                    <p>PHASE_1_BAKE_YOUR_RPI<br /></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Instruction Card: Step 0 (SD card preparation) with image -->
+            <!-- Step 0: SD card prep summary card (visual + text) -->
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="p-3">
+                  <img
+                    alt="Code Snippet Thumbnail"
+                    class="card-img-top rounded-3"
+                    src="Step_0.png"
+                    style="
+                      max-width: 90%;
+                      display: block;
+                      margin: 0 auto;
+                      padding: 5px;
+                      border: 3px solid #1bfd9c;
+                    "
+                  />
+                </div>
+
+                <div class="card-body">
+                  <p class="card-text">
+                    Step 0: Prepare SD Card.<br />
+                    <br />
+                    🔹Breakdown:<br />
+                    -----Insert a blank or preformatted SD card into your
+                    computer.<br />
+                    -----Ensure it's recognized and has enough space for the OS
+                    image.<br />
+                    -----Use high-quality SD cards (8GB+ recommended).<br />
+                    <br />
+                    💡 This SD card will hold the operating system for your
+                    Raspberry Pi! 💾
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group"></div>
+                    <small class="text-body-secondary">Instruction 0</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Carousel: Steps 1-8 — Imaging and pre-boot configuration -->
+            <!-- These slides walk through selecting OS, imaging, and verifying the SD card -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- STEP 1 -->
+                <!-- Slide: choose device/model in imager -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 1"
+                        class="card-img-top rounded-3"
+                        src="Step_1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 1: Choose Raspberry Pi 4 (RPI4).<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Open Raspberry Pi Imager or similar tool.<br />
+                        -----Select your device as Raspberry Pi 4.<br />
+                        <br />
+                        💡 Choosing the right model ensures compatibility with
+                        the OS! 🖥️⚙️
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary">Instruction 1</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- STEP 2.1 -->
+                <!-- Slide: select OS category (Other OS) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 2.1"
+                        class="card-img-top rounded-3"
+                        src="Step_2.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 2.1: In the operating system category.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Go to the “Other OS” section to see available
+                        options.<br />
+                        <br />
+                        💡 Explore alternate OS choices for custom use cases!
+                        🧠🛠️
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 2.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- STEP 2.2 -->
+                <!-- Slide: pick RPI OS Live 64-bit -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 2.2"
+                        class="card-img-top rounded-3"
+                        src="Step_2.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 2.2: Select "RPI OS Live 64-bit" from the list.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Ensure 64-bit support for performance.<br />
+                        -----It will download (automatically) if not
+                        available.<br />
+                        <br />
+                        💡 64-bit systems offer better memory handling and
+                        performance! 🚀📈
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 2.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- STEP 3 -->
+                <!-- Slide: choose the SD card as target drive -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 3"
+                        class="card-img-top rounded-3"
+                        src="Step_3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 3: Choose the storage drive (SD card).<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Select the SD card you inserted in Step 0.<br />
+                        <br />
+                        💡 Double-check the selected storage to avoid
+                        overwriting important data! 📀⚠️
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary">Instruction 3</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- STEP 4 -->
+                <!-- Slide: edit imager settings (hostname, enable SSH, etc.) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 4"
+                        class="card-img-top rounded-3"
+                        src="Step_4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 4: Click "Edit Settings".<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Here you will set your hostname, username,
+                        password, and enable SSH.<br />
+                        <br />
+                        💡 Pre-configure your Pi to speed up setup after
+                        flashing! 🧩🔐
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary">Instruction 4</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 5.1 -->
+                <!-- Slide: recommended example credentials and hostname -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 5.1"
+                        class="card-img-top rounded-3"
+                        src="Step_5.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 5.1: Set hostname, username, and password.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Example Hostname: <code>warden</code><br />
+                        -----Username: <code>pi</code><br />
+                        -----Password: <code>root</code><br />
+                        <br />
+                        💡 Choose secure credentials and memorable hostnames!
+                        🛡️🧠
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 5.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 5.2 -->
+                <!-- Slide: enable SSH option before imaging if remote setup desired -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 5.2"
+                        class="card-img-top rounded-3"
+                        src="Step_5.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 5.2: Enable SSH access.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Check the box to enable SSH for remote access.<br />
+                        <br />
+                        💡 SSH allows you to control your Pi from any computer!
+                        📡💻
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 5.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 6 -->
+                <!-- Slide: confirmation prompt for settings (user clicks Yes) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 6"
+                        class="card-img-top rounded-3"
+                        src="Step_6.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 6: Click "Yes" to confirm settings.<br />
+                        <br />
+                        🔹Breakdown:
+                      </p>
+
+                      <p style="color: yellow">
+                        ----- Note down your Configs if required
+                      </p>
+                      <br />
+                      💡 Make sure all configurations are correct before
+                      proceeding! ✅📋
+                      <p></p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary">Instruction 6</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 7 -->
+                <!-- Slide: warning about data loss when formatting SD card -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 7"
+                        class="card-img-top rounded-3"
+                        src="Step_7.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 7: Clear all SD card data.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Click "Yes".<br />
+                        -----This will erase all data on the SD card before
+                        writing the OS.<br />
+                        <br />
+                        ⚠️ Backup any important files first! (If any)💣📤
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary">Instruction 7</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 8.1 -->
+                <!-- Slide: SD card prepared and tool mounts it for writing -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 8.1"
+                        class="card-img-top rounded-3"
+                        src="Step_8.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 8.1: Preparing the SD card drive for writing.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----The imaging tool opens and mounts the SD card.<br />
+                        -----Checks for read/write access and space.<br />
+                        <br />
+                        💡 Avoid using other applications during this step to
+                        prevent conflicts! 🔄📁
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 8.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 8.2 -->
+                <!-- Slide: writing the OS image to the SD card (process may take several minutes) -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 8.2"
+                        class="card-img-top rounded-3"
+                        src="Step_8.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 8.2: Writing the OS image to the SD card.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----The selected OS is now being written
+                        sector-by-sector.<br />
+                        -----This may take several minutes.<br />
+                        <br />
+                        💡 Be patient — do not remove the SD card or power off!
+                        ⏳📝
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 8.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 8.3 -->
+                <!-- Slide: verification step after writing to ensure integrity -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 8.3"
+                        class="card-img-top rounded-3"
+                        src="Step_8.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 8.3: Verifying the written image.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----The imager reads back the data written to ensure
+                        integrity.<br />
+                        -----Checks for errors or corruption.<br />
+                        <br />
+                        💡 This helps prevent boot failures caused by faulty
+                        writes! 🧪✅
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 8.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Step 8.4 -->
+                <!-- Slide: successful write completion and safe eject reminder -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 8.4"
+                        class="card-img-top rounded-3"
+                        src="Step_8.4.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 8.4: Image writing completed successfully.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----You’ll receive a success message.<br />
+                        -----The SD card is now ready for use in Raspberry
+                        Pi.<br />
+                        <br />
+                        💡 Safely eject the SD card to avoid file system issues!
+                        🟢📤
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 8.4</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls (previous/next) for imaging steps -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            <!-- Carousel: Steps 9-9.3 — Insert SD, network, and power steps -->
+            <!-- These slides show the physical steps to insert the card, connect network and power -->
+
+            <div
+              class="carousel slide col-12 mt-3"
+              data-bs-interval="false"
+              id="instructionCarousel2"
+              style="position: relative; min-height: 100%"
+            >
+              <div class="carousel-inner">
+                <!-- STEP 9.1 -->
+
+                <div class="carousel-item active">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 9.1"
+                        class="card-img-top rounded-3"
+                        src="Step_9.1.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 9.1: Insert the prepared SD card into your
+                        Raspberry Pi.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Make sure the card is securely seated in the
+                        microSD slot.<br />
+                        -----Ensure power is disconnected before inserting.<br />
+                        <br />
+                        💡 Improper insertion can cause boot issues —
+                        double-check it’s secure! 🧩💳
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 9.1</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- STEP 9.2 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 9.2"
+                        class="card-img-top rounded-3"
+                        src="Step_9.2.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 9.2: Connect your Raspberry Pi to a network.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Plug in an Ethernet cable for a stable
+                        connection.<br />
+                        -----Alternatively, use Wi-Fi (if) pre-configured in
+                        imager settings.<br />
+                        <br />
+                        💡 A reliable connection is needed for SSH and updates.
+                        🌐🔗
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 9.2</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- STEP 9.3 -->
+
+                <div class="carousel-item">
+                  <div class="card shadow-sm">
+                    <div class="p-3">
+                      <img
+                        alt="Step 9.3"
+                        class="card-img-top rounded-3"
+                        src="Step_9.3.png"
+                        style="padding: 5px; border: 3px solid #1bfd9c"
+                      />
+                    </div>
+
+                    <div class="card-body">
+                      <p class="card-text">
+                        Step 9.3: Connect power to the Raspberry Pi to boot.<br />
+                        <br />
+                        🔹Breakdown:<br />
+                        -----Use a 5V 3A power supply via USB-C (for RPI4).<br />
+                        -----Boot process begins and initial configuration is
+                        applied.<br />
+                        <br />
+                        💡 The first boot may take several minutes — don’t
+                        interrupt it! ⚙️🟢
+                      </p>
+
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div class="btn-group"></div>
+                        <small class="text-body-secondary"
+                          >Instruction 9.3</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Carousel Controls (previous/next) for physical assembly steps -->
+              <button
+                class="carousel-control-prev"
+                data-bs-slide="prev"
+                data-bs-target="#instructionCarousel2"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-prev-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                data-bs-slide="next"
+                data-bs-target="#instructionCarousel2"
+                style="
+                  top: 50%;
+                  transform: translateY(-50%);
+                  position: absolute;
+                "
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="carousel-control-next-icon"
+                  style="
+                    background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27white%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3E%3C/svg%3E');
+                    background-color: rgba(0, 0, 0, 0.5);
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 1.5rem;
+                  "
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+            <!-- Phase completion card and navigation to next phase -->
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <div class="alert alert-info text-center" role="alert">
+                    <p style="color: lightgreen">PHASE_1_COMPLETE<br /></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mt-3">
+              <div class="card shadow-sm">
+                <div class="card-body text-center">
+                  <a
+                    href="../P2_Installing_OMV/Config_RPI_&_OVM.html"
+                    class="btn btn-success btn-lg fw-bold"
+                    style="min-width: 280px"
+                  >
+                    Go to phase 2 – Installing_OMV
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer: quick links, resources and newsletter form -->
+    <footer class="container-fluid footer-custom mt-5">
+      <div class="container py-5">
+        <div class="row gy-4">
+          <!-- Project Info -->
+          <div class="col-12 col-md-4">
+            <h5 class="text-white mb-3">Pi-Vate Cloud</h5>
+            <p class="text-light small">
+              Pi-Vate Cloud is a practical documentation project for building a
+              personal Raspberry Pi server, configuring essential services, and
+              securely accessing your home lab from anywhere.
+            </p>
+          </div>
+
+          <!-- Navigation -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Navigation</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+                >
+                  Home
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="BAKE_YOUR_RPI.html">
+                  Bake Your Raspberry Pi
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="Config_RPI_&_OVM.html">
+                  Configure Raspberry Pi & OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="Config_RPI_&_Local_Sys.html"
+                >
+                  Local System Integration
+                </a>
+              </li>
+
+              <!-- ✅ Phase 4 added -->
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="SERVICES_SETUP.html">
+                  Service Installation & Configuration
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a class="nav-link p-0 text-light" href="ACCESS_TWINGATE.html">
+                  Secure Remote Access
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="col-6 col-md-3">
+            <h6 class="text-white">Resources</h6>
+            <ul class="nav flex-column small">
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.raspberrypi.com/documentation/"
+                  target="_blank"
+                >
+                  Raspberry Pi Documentation
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.openmediavault.org/"
+                  target="_blank"
+                >
+                  OpenMediaVault
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://www.twingate.com/"
+                  target="_blank"
+                >
+                  Twingate
+                </a>
+              </li>
+
+              <li class="nav-item mb-2">
+                <a
+                  class="nav-link p-0 text-light"
+                  href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+                  target="_blank"
+                >
+                  GitHub Repository
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 pt-4 border-top border-secondary"
+        >
+          <p class="text-light small mb-2 mb-md-0">
+            © 2025 Pi-Vate Cloud · Built for learning, experimentation, and
+            homelabs.
+          </p>
+
+          <div class="d-flex gap-3">
+            <a
+              href="https://github.com/Illusory-Warden/The_Atomic_Alliance"
+              target="_blank"
+              class="text-light small text-decoration-none"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://illusory-warden.github.io/The_Atomic_Alliance/"
+              class="text-light small text-decoration-none"
+            >
+              Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Inline footer styles and small UI helpers -->
+    <style>
+      .footer-custom {
+        background-color: #333333;
+        color: white;
+      }
+      footer {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .form-control {
+        max-width: 300px;
+      }
+      .bi {
+        transition: transform 0.2s ease-in-out;
+      }
+      .bi:hover {
+        transform: scale(1.1);
+      }
+    </style>
+    <!-- Copy button clipboard handler: attaches to elements with class 'copy-btn' -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".copy-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const code = this.getAttribute("data-code");
+            navigator.clipboard
+              .writeText(code)
+              .then(() => {
+                this.textContent = "Copied!";
+                this.classList.add("btn-success"); // Optional: Change color
+                this.classList.remove("btn-outline-secondary");
+
+                // Reset button text after 2 seconds
+                setTimeout(() => {
+                  this.textContent = "Copy";
+                  this.classList.remove("btn-success");
+                  this.classList.add("btn-outline-secondary");
+                }, 2000);
+              })
+              .catch((err) => console.error("Error copying text", err));
+          });
+        });
+      });
+    </script>
+    <!-- Fallback copy function: copies content of element with id 'automation-code' -->
+    <script>
+      function copyCode() {
+        const codeElement = document.getElementById("automation-code");
+        if (!codeElement) {
+          alert("Could not find code element");
+          return;
+        }
+
+        // Create a temporary textarea element to copy from
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = codeElement.textContent;
+        document.body.appendChild(tempTextArea);
+
+        // Select the text and copy
+        tempTextArea.select();
+        tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+        try {
+          const successful = document.execCommand("copy");
+          const copyBtn = document.getElementById("copyButton");
+          copyBtn.textContent = successful ? "Copied!" : "Failed to copy";
+
+          setTimeout(function () {
+            copyBtn.textContent = "Copy Code";
+          }, 2000);
+        } catch (err) {
+          console.error("Unable to copy", err);
+        }
+
+        // Remove the temporary element
+        document.body.removeChild(tempTextArea);
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
